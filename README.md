@@ -11,7 +11,7 @@ run the node.js command prompt
 
 install module 'grunt-cli' globally
 - in node command prompt: 
-    npm install -g grunt-cli
+```npm install -g grunt-cli```
 
 Add any new references to BOTH .csjproj file and build.xml (for Jenkins)
 
@@ -23,17 +23,18 @@ cd to same directory as Gruntfile.js (root folder of project)
 if you want to switch and test different environments
 
 in node command prompt: 
-    grunt build --target=<TARGET> --embeddable=true
+```grunt build --target=<TARGET> --embeddable=true```
     
 possible target arguments: debug, dev, test, prototype, prod (e.g. grunt build --target=dev)
 
 ###AUTOMATICALLY
 
 watches javascript, less and [index.]html files for changes and builds files automatically on the fly
+
 --> IMPORTANT: assumes 'local' (development) environment!
 
 in node command prompt:
-    grunt watch --embeddable=true
+```grunt watch --embeddable=true```
 
 
 
@@ -42,6 +43,7 @@ in node command prompt:
 on Windows 7:
 * go to C:\Program Files\IIS Express
 * iisexpress /site:<name>
+
 e.g. iisexpress /site:Storefront
 
 additional help:
@@ -65,13 +67,15 @@ attributes for storefront configuration, and a script.  The data attributes incl
 * data-controls - (optional) This is a Boolean parameter that controls the display of the pagination and ordering controls in the embeddable storefront.  The default is ‘true’.  ‘false’ will disable the controls, which is useful in cases where the collection may not be large enough to require pagination or ordering options.
 
 Code for embed example:
-    ```
-    <div data-cdc-widget="EmbeddableStorefrontHHS" data-collectionId="5" data-theme="green" data-title="NIH Content Storefront"></div>
-    <script type="text/javascript" src="//www.cdc.gov/TemplatePackage/contrib/widgets/tp-widget-external-loader.js"></script>
-    ```
+
+```
+<div data-cdc-widget="EmbeddableStorefrontHHS" data-collectionId="5" data-theme="green" data-title="NIH Content Storefront"></div>
+<script type="text/javascript" src="//www.cdc.gov/TemplatePackage/contrib/widgets/tp-widget-external-loader.js"></script>
+```
 
 You can also view index.html and pass in the configuration options with # fragments at the end of the url like:
-'index.html#/embeddable/collectionId/5/title/Test%20Embeddable%20Storefront/theme/blue/controls/false'
+
+```index.html#/embeddable/collectionId/5/title/Test%20Embeddable%20Storefront/theme/blue/controls/false```
 
 
 
