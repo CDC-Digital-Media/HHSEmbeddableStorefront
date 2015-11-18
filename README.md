@@ -1,6 +1,6 @@
 
 # HHS Embeddable Storefront
-This is a prototype application to allow
+This is a prototype application that uses the HHS Media Services API to present a storefront of NIH content for reuse.  This prototype is based on the CDC embeddable media storefront.
 
 ## PROJECT SETUP
 For Windows:
@@ -88,6 +88,9 @@ index.html#/embeddable/collectionId/5/title/Test%20Embeddable%20Storefront/theme
 
 
 ## OTHER INFO
+### API
+https://api.digitalmedia.hhs.gov/
+
 ### IISExpress
 http://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line
 http://www.codeproject.com/Articles/396569/Make-Web-Development-Easier-with-IIS-Express
