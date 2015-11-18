@@ -1,0 +1,49 @@
+﻿<!-- HTML5 -->
+<iframe ng-if="ecard.mediaItem.extension.html5Source" ng-src="{{ecard.mediaItem.extension.html5Source | trustedSource}}" class="html5Frame" width="580px" height="400px" scrolling="no"></iframe>
+
+<!-- or: Flash -->
+<div ng-if="!ecard.mediaItem.extension.html5Source" id="flashContent">
+	<a title="{{ecard.mediaItem.name}}" ng-href="{{ecard.mediaItem.targetUrl}}">
+		<img title="{{ecard.mediaItem.name}}" ng-src="{{ecard.mediaItem.extension.imageSourceOutsideLarge}}" alt="{{ecard.mediaItem.name}}" class="cardImg" />
+	</a>
+	<!--<embed type="application/x-shockwave-flash" src="http://.....[devServer]...../eCard_resources/smoking/VS_Sept.swf?n=2009-04-30" width="580" height="400" id="Banner" name="Banner" quality="best" scale="showall" allowscriptaccess="sameDomain" align="top" wmode="window">-->
+</div>
+
+<div class="csEcard_ctrlContainer">
+	<a href="#" ng-click="ecard.refresh()" class="csEcard_viewFront">View front of Card</a>
+</div>
+<div class="msgHeader">Your friend included a personal message to you:</div>
+<div class="msgBody">{{ecard.personalMessage}}</div>
+<div class="msgDisclaimer">
+	<strong>DISCLAIMER:</strong>
+	<p>Comments and views expressed in the personal message feature are those of the individual sending the personal message and do not necessarily reflect those of the Centers for Disease Control and Prevention (CDC), the Department of Health and Human Services (DHHS) or the Federal government. CDC/DHHS does not control or guarantee the accuracy or relevance of the information sent in a personal message, nor does CDC/DHHS endorse any content or links provided therein.</p><p>To report abuse please send an email to <a href="mailto:senderEmail1@email">senderEmail1@email</a>.</p>
+</div>
+
+<!-- flash -->
+<!--
+<div id="flashContentALT">
+	<embed type="application/x-shockwave-flash" src="http://.....[devServer]...../eCard_resources/smoking/VS_Sept.swf?n=2009-04-30" width="580" height="400" id="Banner" name="Banner" quality="best" scale="showall" allowscriptaccess="sameDomain" align="top" wmode="window">
+</div>
+
+<div class="csEcard_ctrlContainer">
+	<a href="#" class="csEcard_viewFront">View front of Card</a>
+</div>
+<div class="msgHeader">Your friend included a personal message to you:</div>
+<div class="msgBody">@email</div>
+<div class="msgDisclaimer">
+	<strong>DISCLAIMER:</strong>
+	<p>Comments and views expressed in the personal message feature are those of the individual sending the personal message and do not necessarily reflect those of the Centers for Disease Control and Prevention (CDC), the Department of Health and Human Services (DHHS) or the Federal government. CDC/DHHS does not control or guarantee the accuracy or relevance of the information sent in a personal message, nor does CDC/DHHS endorse any content or links provided therein.</p><p>To report abuse please send an email to <a href="mailto:senderEmail1@email">senderEmail1@email</a>.</p>
+</div>
+-->
+
+<!-- HTML5 -->
+<!--<iframe class="html5Frame" width="580px" height="400px" scrolling="no" src="http://.....[devServer]...../eCard_resources/STD01.html"></iframe>
+<div class="csEcard_ctrlContainer">
+	<a href="#" class="csEcard_viewFront">View front of Card</a>
+</div>
+<div class="msgHeader">Your friend included a personal message to you:</div>
+<div class="msgBody">test</div>
+<div class="msgDisclaimer">
+	<strong>DISCLAIMER:</strong>
+	<p>Comments and views expressed in the personal message feature are those of the individual sending the personal message and do not necessarily reflect those of the Centers for Disease Control and Prevention (CDC), the Department of Health and Human Services (DHHS) or the Federal government. CDC/DHHS does not control or guarantee the accuracy or relevance of the information sent in a personal message, nor does CDC/DHHS endorse any content or links provided therein. </p><p>To report abuse please send an email to <a href="mailto:senderEmail1@email">senderEmail1@email</a>.</p>
+</div>-->

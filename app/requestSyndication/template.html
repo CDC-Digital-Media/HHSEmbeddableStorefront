@@ -1,0 +1,97 @@
+﻿<h2>Request a Page to be Syndicated</h2>
+<div class="requestPage sf_form">
+
+    <div class="form-horizontal">
+        <p>Please enter your contact information and the specific Web page URLs you are interested in. Your information will only be used to confirm the request. When you have completed the form, select Submit Request.</p>
+
+        <form name="requestPage.form" id="emailforms" method="get" action="{{requestSyndication.EMAIL_VALIDATOR}}" class="validate" role="form" novalidate>
+            <input name="validator" type="hidden" value="recaptcha" />
+            <input name="LineWrap" type="hidden" value="2048" />
+            <input name="env.HTTP_USER_AGENT" type="hidden" value="{{requestSyndication.HTTP_USER_AGENT}}" />
+            <input name="env.HTTP_HOST" type="hidden" value="{{requestSyndication.HTTP_HOST}}" />
+            <input name="env.HTTP_REFERER" type="hidden" value="{{requestSyndication.HTTP_REFERER}}" />
+            <input name="Subject" type="hidden" value="Media Library - Request pages for syndication" />
+            <input type="hidden" name="RCPT" value="{{requestSyndication.RCPT}}" />
+            <input type="hidden" name="EmailTemplate" value="{{requestSyndication.EMAIL_REQUEST_TEMPLATE}}" />
+            <input type="hidden" name="refer" value="{{requestSyndication.EMAIL_REQUEST_REFER}}" />
+
+            <input id="Host" name="Host" type="hidden" value="{{requestSyndication.HTTP_HOST}}" />
+
+            <div class="control-group requestPageContactArea">
+                <label class="control-label" for="requestEmail">Contact Email</label>
+                <div class="controls apiFormControls">
+                    <input type="email" id="requestEmail" name="requestEmail" ng-model="requestSyndication.emailforms.email" placeholder="Email" class="input-xlarge" ng-required="true" maxlength="50" />
+                </div>
+            </div>
+
+            <div class="requestRowsContainer">
+                <div class="control-group requestPageRow" ng-repeat="item in requestSyndication.requestPages track by $index">
+                    <label class="control-label" for="requestPage">Web page</label>
+                    <div class="controls" >
+                        <!-- #DN validation bug in Angular with type="url" -->
+                        <input type="url" name="requestPage_{{$index}}" ng-model="requestSyndication.requestPages[$index]" placeholder="https://www.domain.com" class="input-xlarge requestPageURL" 
+                            ng-required="$index == 0" maxlength="250" />
+                        <input type="button" ng-click="requestSyndication.removeItem($index)" class="close icon-delete" aria-hidden="true" value="&#xf00d;" ng-show="$index != 0" />
+                        <span class="validationMsg" ng-show="requestPage.form.requestPage_{{$index}}.$invalid && requestSyndication.validationResults[$index] != '' ">already exists</span>
+                    </div>
+                </div>
+                <a ng-if="requestSyndication.requestPages.length < requestSyndication.MAX_ITEMS" href="#" ng-click="requestSyndication.addItem()" class="btnAddAnother" style="margin-bottom: 10px;"><span class="icon-plus"></span>Add another page</a>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <div id="recaptcha"></div>
+                    <script>
+
+                        $.getScript("//www.google.com/recaptcha/api/js/recaptcha_ajax.js", function () {
+                            if (typeof Recaptcha != "undefined") {
+                                Recaptcha.create("6LeoX_8SAAAAAHg8zLCbOeT3bgPcnziriOmXHxYU", "recaptcha", {
+                                    theme: "white",
+                                    callback: function () {
+                                        $('.control-group .spinner').hide();
+
+                                        cdcApplyValidation();
+
+                                        $('form.validate').submit(function () {
+                                            setTimeout(function () {
+                                                if ($('.requestPage .error:visible').length == 0) {
+                                                    $('.control-group .spinner').show();
+                                                }
+                                            }, 500);
+
+                                        });
+                                    }                                   
+                                });
+                            }
+                            else {
+                                //alert("recaptcha not loaded");
+                            }
+                        });
+
+                    </script>
+                    <noscript>
+                        <iframe src="//www.google.com/recaptcha/api/noscript?k=6LeoX_8SAAAAAHg8zLCbOeT3bgPcnziriOmXHxYU" height="300" width="500" title="Challenge field"></iframe>
+                        <div class="form-group">
+                            <label for="recaptcha_challenge_field">Respond to the challenge above to get a value to enter in this box:</label>
+                            <textarea id="recaptcha_challenge_field" name="recaptcha_challenge_field"
+                                rows="3" cols="40"></textarea>
+                            <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+                        </div>
+                    </noscript>
+                    <div class="form-group challenge clearPositioning"></div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls typeG">
+                    <input id='btnSubmit' type="submit" class="btn btn-primary" value="Submit" /> <span class="valMsg_global spinner"><span class="icon-spinner icon-spin"></span> Sending request ...</span>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,14 @@
+﻿<div class="span18">
+	<h2>{{topicPage.name}}</h2>
+	<div class="tree">
+		<div class="row">
+			<div class="span8" ng-repeat="splitItem in topicPage.data">
+				<ul>
+					<li ng-repeat="item in splitItem">
+						<a href="#" class="tree_topic" ng-click="topicPage.click(item, $event)">{{item.name}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

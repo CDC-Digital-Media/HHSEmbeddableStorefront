@@ -1,0 +1,142 @@
+﻿<div class="clearfix">
+	<h1>Welcome, <span class="userName"></span> <span class="pull-right btnNeedHelp"><a href="#"><i class="icon-question-sign"></i> Need Help?</a></span></h1>
+</div>
+<div class="alert alert-success" style="display:none;">
+	<button type="button" class="close">×</button>
+	<h4>Welcome to your new content syndication account!</h4>
+	<p>
+		This page is always available by clicking on <strong>&quot;Syndication List&quot;</strong> in the top right corner of the screen. From here you can: 
+		<ul>
+			<li>See the content that you've selected for syndication</li>
+			<li>Collaborate with other members in your organization</li>
+			<li>Manage your account information</li>
+		</ul>
+	</p>
+</div>
+<div style="visibility: visible;" id="TabSet-1" class="tabs ui-tabs ui-widget ui-widget-content ui-corner-all">
+	<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+		<li class="ui-state-default ui-corner-top ui-tabs-active ui-state-active myContent" role="tab" tabIndex="0" aria-labelledby="ui-id-1" aria-selected="true" aria-controls="tabs-1">
+			<a id="ui-id-1" class="ui-tabs-anchor" role="presentation" tabIndex="-1" href="#tabs-1">Syndication List</a>
+		</li>
+		<li class="ui-state-default ui-corner-top myAccount" role="tab" tabIndex="-1" aria-labelledby="ui-id-2" aria-selected="false" aria-controls="tabs-2">
+			<a id="A1" class="ui-tabs-anchor" role="presentation" tabIndex="-1" href="#tabs-2">My Account</a>
+		</li>
+		<li class="ui-state-default ui-corner-top myOrganizations" role="tab" tabIndex="-1" aria-labelledby="ui-id-2" aria-selected="false" aria-controls="tabs-2">
+			<a id="ui-id-2" class="ui-tabs-anchor" role="presentation" tabIndex="-1" href="#tabs-3">My Organizations</a>
+		</li>
+		
+	</ul>
+	<div class="contentDetail">Showing media selected for: <span class="domainName"></span>
+		<p style="padding:20px; font-style:italic;" class="noContent">
+			No syndication media has been selected for this Domain.
+		</p>
+		<div class="alert alert-success" style="margin-top:12px; display:none;">
+			<button type="button" class="close">×</button>
+			<p>
+				This tab will show you the content that you've selected for syndication within the selected organization and domain. If you are a member of multiple 
+				organizations, you'll be able to choose the organization and domain that you want to work with.</p>
+			<p>
+				Once you're logged in, syndication media is displayed with a 'plus' icon. Click this icon once to add
+				the media to your list. Click it again to remove the media from your list.
+			</p>
+			<div class="text-center">
+				<img src="images/help_addtolist_0.png" alt="" /> &nbsp; <i class="icon-angle-right" style="font-size:14pt;"></i> &nbsp; <img src="images/help_addtolist_1.png" alt="" />
+			</div>
+		</div>
+		<div class="selectedMedia"></div>
+	</div>
+	<div class="orgDetail">
+		<div class="orgNew"></div>
+		<div class="orgTable">
+		<div class="alert alert-success clearfix" style="margin-top:12px; display:none;">
+			<button type="button" class="close">×</button>
+			<p>This is a list of your associated organizations. From this page, you can add yourself to new organzations or manage existing ones.</p>
+		</div>
+		<div class="pull-right hide">
+			<a href="#" class="btn btn-small btn-default btnAddOrg"><i class="icon-plus"></i> Add an Organization</a>
+		</div>
+		<h3>You currently belong to these organizations:</h3>
+		<div class="accordion ui-accordion ui-widget ui-helper-reset" role="tablist" style="visibility: visible;">
+			<h3 class="hidden ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-top" role="tab" id="ui-accordion-GalleryAccordion-header-0" aria-controls="ui-accordion-GalleryAccordion-panel-0" aria-selected="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-triangle-1-e"></span>Organization 1<span class="screenReaderOnly ui-accordion-textualIndicator">&nbsp;expanded</span></h3>
+			<div class="hidden ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" style="display: none; height: auto;" id="ui-accordion-GalleryAccordion-panel-0" aria-labelledby="ui-accordion-GalleryAccordion-header-0" role="tabpanel" aria-expanded="true" aria-hidden="false">
+				<div class="span8">
+					<h5>Users in this Org: <span class="pull-right"><i class="icon-plus"></i> <a href="#" class="orgUsers-adduser">Add User</a></span></h5>
+					<ul class="orgUsers">
+						<li><a href="#" class="orgUsers-default">Tom Brady</a> - <span>(default)</span></li>
+						<li><a href="#">Mike Johnson</a></li>
+						<li><a href="#">Gerry Garcia</a></li>
+						<li><a href="#">Chery Twitchell</a></li>
+						<li><a href="#">Lin Wolk</a></li>
+						<li><a href="#">Eldora Krishnan</a></li>
+						<li><a href="#">Kara Merola</a></li>
+						<li><a href="#">Cyrus Castiglia</a></li>
+						<li><a href="#">Tracey Lovelady</a></li>
+						<li><a href="#">Karoline Keck</a></li>
+						<li><a href="#">Deborah Dorantes</a></li>
+						<li><a href="#">Candis Klawitter</a></li>
+					</ul>
+				</div>
+				<div class="span6 offset2">
+					<h5>Domains:</h5>
+					<ul class="orgDomains">
+						<li><a href="#" class="orgDomain-default">www.domain1.com</a> - <span>(default)</span></li>
+						<li><a href="#">www.domain2.com</a></li>
+						<li><a href="#">www.domain3.com</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="orgUsers"></div>
+</div>
+<div class="contactDetail form-horizontal">
+	<div class="alert alert-success clearfix" style="margin-top:12px; display:none;">
+		<button type="button" class="close">×</button>
+		<p>It's all about you! This is where you update your personal information</p>
+	</div>
+	<div class="pull-right hide">
+		<a href="#" class="btn btn-small btn-default"><i class="icon-pencil"></i> Edit</a>
+	</div>
+	<div class="control-group">
+		<div class="span3 text-right">First Name</div>
+		<div class="span5 firstName">
+			<span class="txt"></span> <span class="editFirstName"><a href="#"><i class="icon-pencil"></i> Edit</a></span>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="span3 text-right">Middle Name</div>
+		<div class="span5 middleInit"><span class="txt"></span> <span class="editMiddleName"><a href="#"><i class="icon-pencil"></i> Edit</a></span></div>
+	</div>
+	<div class="control-group">
+		<div class="span3 text-right">Last Name</div>
+		<div class="span5 lastName"><span class="txt"></span> <span class="editLastName"><a href="#"><i class="icon-pencil"></i> Edit</a></span></div>
+	</div>
+	<div class="control-group">
+		<div class="span3 text-right">Email Address</div>
+		<div class="span5 emailAddress"><span class="txt"></span> <span class="editEmail"><a href="#"><i class="icon-pencil"></i> Edit</a></span></div>
+	</div>
+	
+	<div class="control-group">
+		<div class="span3 text-right">Password</div>
+		<div class="span5 emailPass">
+			<span class="txt">*******</span> <span class="editPass"><a href="#"><i class="icon-pencil"></i> Edit</a></span>
+		</div>
+		<div class="span5 editPassFields" style="margin-left:30px; display:none;">
+			<div class="row">
+				<label for="changePassOld">Current Password</label>
+				<input type="password" class="input-medium" id="changePassOld" />
+			</div>
+			<div class="row">
+				<label for="changePassNew1">New Password</label>
+				<input type="password" class="input-medium" id="changePassNew1" />
+			</div>
+			<div class="row">
+				<label for="changePassNew2">New Password confirm</label>
+				<input type="password" class="input-medium" id="changePassNew2" />
+			</div>
+			<div class="row" style="margin-top:10px;">
+				<span class="text-right typeG"><a class="button savePassBtn">Save new password</a></span>
+			</div>
+		</div>
+	</div>
+</div>

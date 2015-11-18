@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'prod|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Storefront</RootNamespace>
+    <AssemblyName>Storefront</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort>44302</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <IncludeIisSettings>false</IncludeIisSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'prototype|AnyCPU'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'dev|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4114.6375, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_binRef\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="Gov.Hhs.Cdc.Commons.Api.Key.Utils">
+      <HintPath>_binRef\Gov.Hhs.Cdc.Commons.Api.Key.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\additionalResources\template.html" />
+    <Content Include="app\atozTopicLetters\controller.js" />
+    <Content Include="app\atozTopicLetters\index.js" />
+    <Content Include="app\atozTopicLetters\service.js" />
+    <Content Include="app\atozTopicLetters\template.html" />
+    <Content Include="app\atozTopicList\controller.js" />
+    <Content Include="app\atozTopicList\index.js" />
+    <Content Include="app\atozTopicList\service.js" />
+    <Content Include="app\atozTopicList\template.html" />
+    <Content Include="app\carouselSlider\controller.js" />
+    <Content Include="app\carouselSlider\index.js" />
+    <Content Include="app\carouselSlider\service.js" />
+    <Content Include="app\carouselSlider\template.html" />
+    <Content Include="app\config\SETTINGS.js" />
+    <Content Include="app\learnmore\controller.js" />
+    <Content Include="app\learnmore\index.js" />
+    <Content Include="app\learnmore\template.html" />
+    <Content Include="app\mt_feeds\controller.js" />
+    <Content Include="app\mt_feeds\detail.html" />
+    <Content Include="app\mt_feeds\index.js" />
+    <Content Include="app\mt_feeds\service.js" />
+    <Content Include="app\mt_feeds\template.html" />
+    <Content Include="app\navFacet\controller.js" />
+    <Content Include="app\navFacet\index.js" />
+    <Content Include="app\navFacet\service.js" />
+    <Content Include="app\navFacet\template.html" />
+    <Content Include="app\navBasic\controller.js" />
+    <Content Include="app\navBasic\index.js" />
+    <Content Include="app\navBasic\service.js" />
+    <Content Include="app\navBasic\template.html" />
+    <Content Include="app\dataService\index.js" />
+    <Content Include="app\dataService\service.js" />
+    <Content Include="app\ecard\controller.js" />
+    <Content Include="app\ecard\index.js" />
+    <Content Include="app\ecard\service.js" />
+    <Content Include="app\ecard\template.html" />
+    <Content Include="app\error\controller.js" />
+    <Content Include="app\error\index.js" />
+    <Content Include="app\error\service.js" />
+    <Content Include="app\error\template.html" />
+    <Content Include="app\faq\template.html" />
+    <Content Include="app\index.js" />
+    <Content Include="app\login\controller.js" />
+    <Content Include="app\login\index.js" />
+    <Content Include="app\login\service.js" />
+    <Content Include="app\login\template.html" />
+    <Content Include="app\main\controller.js" />
+    <Content Include="app\main\index.js" />
+    <Content Include="app\media\controller.js" />
+    <Content Include="app\media\index.js" />
+    <Content Include="app\media\service.js" />
+    <Content Include="app\media\template.html" />
+    <Content Include="app\myaccount\template.html" />
+    <Content Include="app\newaccount\controller.js" />
+    <Content Include="app\newaccount\createContact\controller.js" />
+    <Content Include="app\newaccount\createContact\index.js" />
+    <Content Include="app\newaccount\createContact\service.js" />
+    <Content Include="app\newaccount\createContact\template.html" />
+    <Content Include="app\newaccount\createLogin\controller.js" />
+    <Content Include="app\newaccount\createLogin\index.js" />
+    <Content Include="app\newaccount\createLogin\service.js" />
+    <Content Include="app\newaccount\createLogin\template.html" />
+    <Content Include="app\newaccount\createOrganization\controller.js" />
+    <Content Include="app\newaccount\createOrganization\index.js" />
+    <Content Include="app\newaccount\createOrganization\service.js" />
+    <Content Include="app\newaccount\createOrganization\template.html" />
+    <Content Include="app\newaccount\existingOrganization\controller.js" />
+    <Content Include="app\newaccount\existingOrganization\index.js" />
+    <Content Include="app\newaccount\existingOrganization\service.js" />
+    <Content Include="app\newaccount\existingOrganization\template.html" />
+    <Content Include="app\newaccount\index.js" />
+    <Content Include="app\newaccount\service.js" />
+    <Content Include="app\newaccount\template.html" />
+    <Content Include="app\reportProblem\controller.js" />
+    <Content Include="app\reportProblem\index.js" />
+    <Content Include="app\reportProblem\service.js" />
+    <Content Include="app\reportProblem\template.html" />
+    <Content Include="app\requestSyndication\controller.js" />
+    <Content Include="app\requestSyndication\index.js" />
+    <Content Include="app\requestSyndication\service.js" />
+    <Content Include="app\requestSyndication\template.html" />
+    <Content Include="app\resetPasswordRequest\controller.js" />
+    <Content Include="app\resetPasswordRequest\index.js" />
+    <Content Include="app\resetPasswordRequest\service.js" />
+    <Content Include="app\resetPasswordRequest\template.html" />
+    <Content Include="app\resetPassword\controller.js" />
+    <Content Include="app\resetPassword\index.js" />
+    <Content Include="app\resetPassword\service.js" />
+    <Content Include="app\resetPassword\template.html" />
+    <Content Include="app\results\controller.js" />
+    <Content Include="app\results\index.js" />
+    <Content Include="app\results\service.js" />
+    <Content Include="app\results\template.html" />
+    <Content Include="app\results\tile.html" />
+    <Content Include="app\search\controller.js" />
+    <Content Include="app\search\index.js" />
+    <Content Include="app\search\service.js" />
+    <Content Include="app\search\template.html" />
+    <Content Include="app\shareContent\controller.js" />
+    <Content Include="app\shareContent\index.js" />
+    <Content Include="app\shareContent\service.js" />
+    <Content Include="app\shareContent\template.html" />
+    <Content Include="app\successPageRequest\controller.js" />
+    <Content Include="app\successPageRequest\index.js" />
+    <Content Include="app\successPageRequest\template.html" />
+    <Content Include="app\successPage\controller.js" />
+    <Content Include="app\successPage\index.js" />
+    <Content Include="app\successPage\template.html" />
+    <Content Include="app\syndicationList\controller.js" />
+    <Content Include="app\syndicationList\index.js" />
+    <Content Include="app\syndicationList\service.js" />
+    <Content Include="app\syndicationList\template.html" />
+    <Content Include="app\topicNav\controller.js" />
+    <Content Include="app\topicNav\index.js" />
+    <Content Include="app\topicNav\service.js" />
+    <Content Include="app\topicNav\template.html" />
+    <Content Include="app\topicPage\controller.js" />
+    <Content Include="app\topicPage\index.js" />
+    <Content Include="app\topicPage\service.js" />
+    <Content Include="app\topicPage\template.html" />
+    <Content Include="app\topics\controller.js" />
+    <Content Include="app\topics\index.js" />
+    <Content Include="app\topics\service.js" />
+    <Content Include="app\topics\template.html" />
+    <Content Include="app\topSyndicated\controller.js" />
+    <Content Include="app\topSyndicated\index.js" />
+    <Content Include="app\topSyndicated\service.js" />
+    <Content Include="app\topSyndicated\template.html" />
+    <Content Include="app\usageGuidelines\controller.js" />
+    <Content Include="app\usageGuidelines\index.js" />
+    <Content Include="app\usageGuidelines\service.js" />
+    <Content Include="app\usageGuidelines\template.html" />
+    <Content Include="app\userService\index.js" />
+    <Content Include="app\userService\service.js" />
+    <Content Include="app\VERSION.js" />
+    <Content Include="app\VERSION.tmpl.js" />
+    <Content Include="app\_bundle.js" />
+    <Content Include="css\_bundle.css" />
+    <Content Include="ecard.html" />
+    <Content Include="Gruntfile.js" />
+    <Content Include="grunt_options\browserify.js" />
+    <Content Include="grunt_options\clean.js" />
+    <Content Include="grunt_options\concat.js" />
+    <Content Include="grunt_options\copy.js" />
+    <Content Include="grunt_options\htmlmin.js" />
+    <Content Include="grunt_options\jscs.js" />
+    <Content Include="grunt_options\jshint.js" />
+    <Content Include="grunt_options\less.js" />
+    <Content Include="grunt_options\replace.js" />
+    <Content Include="grunt_options\uglify.js" />
+    <Content Include="grunt_options\watch.js" />
+    <Content Include="images\ajax-loader.gif" />
+    <Content Include="images\blue_minus.png" />
+    <Content Include="images\blue_plus.png" />
+    <Content Include="images\checkboxes.png" />
+    <Content Include="images\facebook.png" />
+    <Content Include="images\googleplus.png" />
+    <Content Include="images\help_addtolist_0.png" />
+    <Content Include="images\help_addtolist_1.png" />
+    <Content Include="images\home_apicloud.png" />
+    <Content Include="images\home_art.png" />
+    <Content Include="images\home_fasdapp.png" />
+    <Content Include="images\itunes.png" />
+    <Content Include="images\nav_selected.png" />
+    <Content Include="images\reader-16x16.png" />
+    <Content Include="images\rss.png" />
+    <Content Include="images\twitter.png" />
+    <Content Include="index.aspx" />
+    <Content Include="index.html" />
+    <Content Include="index.tmpl.html" />
+    <Content Include="js\app.js" />
+    <Content Include="js\appState.js" />
+    <Content Include="js\CONFIG.tmpl.js" />
+    <Content Include="js\CONFIG_ENV_SETTINGS.js" />
+    <Content Include="js\dataServices.js" />
+    <Content Include="js\embed.js" />
+    <Content Include="js\errorManager.js" />
+    <Content Include="js\index.js" />
+    <Content Include="js\libs\bsTooltipPopoverPlugin.js" />
+    <Content Include="js\libs\CDC.Video.js" />
+    <Content Include="js\libs\flexslider.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="js\libs\jquery.autoellipsis.min.js" />
+    <Content Include="js\libs\jquery.js" />
+    <Content Include="js\libs\jquery.min.js" />
+    <Content Include="js\libs\_bundle.js" />
+    <Content Include="js\plugins\ecardPlugin.js" />
+    <Content Include="js\plugins\organizationPlugin.js" />
+    <Content Include="js\share.js" />
+    <Content Include="js\plugins\accountPlugin.js" />
+    <Content Include="js\plugins\advancedSearchPlugin.js" />
+    <Content Include="js\plugins\bsPopoverExtenderPlugin.js" />
+    <Content Include="js\plugins\pdfPlugin.js" />
+    <Content Include="js\plugins\pdfEmbedPlugin.js" />
+    <Content Include="js\plugins\domainPickerPlugin.js" />
+    <Content Include="js\plugins\domainViewerPlugin.js" />
+    <Content Include="js\plugins\ecardEmbedPlugin.js" />
+    <Content Include="js\plugins\hideSpinnerPlugin.js" />
+    <Content Include="js\plugins\htmlContentEmbedPlugin.js" />
+    <Content Include="js\plugins\htmlContentPlugin.js" />
+    <Content Include="js\plugins\htmlContent_tempPlugin.js" />
+    <Content Include="js\plugins\index.js" />
+    <Content Include="js\plugins\mediaDescriptionPlugin.js" />
+    <Content Include="js\plugins\mediaEmbedPlugin.js" />
+    <Content Include="js\plugins\mediaListItemPlugin.js" />
+    <Content Include="js\plugins\mediaPlugin.js" />
+    <Content Include="js\plugins\micrositeEmbedPlugin.js" />
+    <Content Include="js\plugins\micrositeMediaPlugin.js" />
+    <Content Include="js\plugins\pagerPlugin.js" />
+    <Content Include="js\plugins\podcastChannelPlugin.js" />
+    <Content Include="js\plugins\podcastEmbedPlugin.js" />
+    <Content Include="js\plugins\podcastPlugin.js" />
+    <Content Include="js\plugins\showSpinnerPlugin.js" />
+    <Content Include="js\plugins\tileMakerPlugin.js" />
+    <Content Include="js\SETTINGS.js" />
+    <Content Include="js\syndicationList.js" />
+    <Content Include="js\utils\ajax.js" />
+    <Content Include="js\utils\browser.js" />
+    <Content Include="js\utils\debug.js" />
+    <Content Include="js\utils\index.js" />
+    <Content Include="js\utils\misc.js" />
+    <Content Include="mailForms\cdc.formValidation.js" />
+    <Content Include="mailForms\cdc.formValidation_new.js" />
+    <Content Include="mailForms\reportAProblem_refer.htm" />
+    <Content Include="mailForms\reportAProblem_template.txt" />
+    <Content Include="mailForms\requestAPage_refer.htm" />
+    <Content Include="mailForms\requestAPage_template.txt" />
+    <Content Include="mailforms_referPage.htm" />
+    <Content Include="mediaAssets\carouselThumb\13.jpg" />
+    <Content Include="mediaAssets\carouselThumb\18922.jpg" />
+    <Content Include="mediaAssets\carouselThumb\19429.jpg" />
+    <Content Include="mediaAssets\carouselThumb\39.jpg" />
+    <Content Include="mediaAssets\carouselThumb\59.jpg" />
+    <Content Include="mediaAssets\ecards\cards\cancer\LungCancerMen.jpg" />
+    <Content Include="mediaAssets\ecards\cards\cancer\LungCancerMen.swf" />
+    <Content Include="mediaAssets\ecards\cards\cancer\LungCancerWomen.jpg" />
+    <Content Include="mediaAssets\ecards\cards\cancer\LungCancerWomen.swf" />
+    <Content Include="mediaAssets\ecards\cards\Halloween\11_226952A_zollicoffer_Halloween_Health_eCard.jpg" />
+    <Content Include="mediaAssets\ecards\cards\Halloween\11_226952A_zollicoffer_Halloween_Health_eCard.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_215218B_hughley_OSH_eCard.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_215218B_hughley_OSH_eCard.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_219152A_hughley_ecard_for_SGR_release1.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_219152A_hughley_ecard_for_SGR_release1.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_219171A_hughley_year_to_quit_ecard.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\10_219171A_hughley_year_to_quit_ecard.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\11_220593A_hughley_Valentines_Day_e-card.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\11_220593A_hughley_Valentines_Day_e-card.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\11_224758_july4_quit_smoking.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\11_224758_july4_quit_smoking.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\12_230360A_hughley_eCard_SGR_Youth_Smoking.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\12_230360A_hughley_eCard_SGR_Youth_Smoking.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard1waiting.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard1waiting.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard2tiredplanning.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard2tiredplanning.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard3takesbreath.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard3takesbreath.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard4smokefree.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard4smokefree.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard5eatfortwo.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\ecard5eatfortwo.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\LiveSmokeFree.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\LiveSmokeFree.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\quitsmoking1.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\quitsmoking1.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\quitsmoking2.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\quitsmoking2.swf" />
+    <Content Include="mediaAssets\ecards\cards\smoking\YouCanQuitSmoking.jpg" />
+    <Content Include="mediaAssets\ecards\cards\smoking\YouCanQuitSmoking.swf" />
+    <Content Include="mediaAssets\ecards\cards\valentines\OSH_Valentine_2012.jpg" />
+    <Content Include="mediaAssets\ecards\cards\valentines\OSH_Valentine_2012.swf" />
+    <Content Include="mediaAssets\ecards\cards\WomensHealth\WearRed2013.jpg" />
+    <Content Include="mediaAssets\ecards\cards\WomensHealth\WearRed2013.swf" />
+    <Content Include="secureProxy.asmx" />
+    <Content Include="templates\account.html" />
+    <Content Include="templates\badgeEmbedForm.html" />
+    <Content Include="templates\htmlEmbedForm.html" />
+    <Content Include="templates\searchAdvanced.html" />
+    <Content Include="templates\mediaDescription.html" />
+    <Content Include="templates\mediaListItem.html" />
+    <Content Include="templates\modalUsageGuidelines.html" />
+    <Content Include="templates\podcastEmbedForm.html" />
+    <Content Include="templates\usageGuidelines.html" />
+    <Content Include="test\htmlEmbedTest.html" />
+    <Content Include="test\shareTestIndex.html" />
+    <Content Include="share.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="share.aspx.cs">
+      <DependentUpon>share.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="share.aspx.designer.cs">
+      <DependentUpon>share.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="secureProxy.asmx.cs">
+      <DependentUpon>secureProxy.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\csEcard.less" />
+    <Content Include="css\csPodcast.less" />
+    <Content Include="css\listNav.less" />
+    <Content Include="css\local.less" />
+    <Content Include="css\responsive.less" />
+    <Content Include="docs\CS Digital Media Syndication User Guide.pdf" />
+    <Content Include="docs\DMS_collaboration_factsheet.pdf" />
+    <Content Include="docs\EnergizingData.pdf" />
+    <Content Include="docs\HealthContent_WebAppsSocialMedia.pdf" />
+    <Content Include="docs\PublicHealthMediaLibraryGlossary.pdf" />
+    <Content Include="css\captcha.less" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="TemplatePackage\3.0\js\cdc\oadc\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>56901</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44302/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <!-- Import the msbuildtasks -->
+  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" Condition="Exists('$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets')" />
+</Project>

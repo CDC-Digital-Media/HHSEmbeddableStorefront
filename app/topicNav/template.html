@@ -1,0 +1,70 @@
+﻿<!--<nav id="left" class="hidden-one hidden-two">
+	<h3>
+		<a href="#" class="homeLink" ng-click="topicNav.homeclick($event)">Media Library Home</a>
+	</h3>
+	<ul id="nav-primary" class="categoryFilter" style="display:block;">
+		<li ng-repeat="item in topicNav.data">
+
+			<a href="#" ng-click="topicNav.click(item, $event); topicNav.expandClick(item, $event);">{{item.name}}</a>
+
+			<div ng-if="item.items.length" class="plus">
+				<a href="#" ng-click="topicNav.expandClick(item, $event);">
+					<img ng-src="/TemplatePackage/3.0/images/{{item.expanded ? 'minus12' : 'plus12'}}.png" alt="expand" />
+				</a>
+			</div>
+
+			<ul ng-repeat="subItem in item.items | limitTo: (topicNav.NUMBER_OF_SUBITEMS + 1) track by $index" style="display:block;" ng-show="item.expanded">
+				<li ng-if="$index < topicNav.NUMBER_OF_SUBITEMS">
+					<a href="#" ng-click="topicNav.click(subItem, $event)">{{subItem.name}}</a>
+				</li>
+				<li ng-if="$index === topicNav.NUMBER_OF_SUBITEMS">
+					<a href="#/topicpage/{{item.id}}{{topicNav.$routeParams.mediatype ? '/mediatype/' + topicNav.$routeParams.mediatype : ''}}" class="topicIndex">View More Topics <span class="icon-angle-right"></span></a>
+				</li>
+			</ul>
+
+		</li>
+	</ul>
+</nav>-->
+<div ng-controller="SearchController as search">
+	
+	<nav id="left" class="hidden-one hidden-two">
+		<h3>
+			<a href="#" class="homeLink" ng-click="topicNav.homeclick($event)">Media Library Home</a>
+		</h3>
+		<ul id="nav-primary" class="categoryFilter" style="display:block;">
+			<li>
+				<a href="#">Browse by Media Type</a>
+
+				<div class="plus">
+					<a href="#" ng-click="item.expanded = !item.expanded">
+						<img ng-src="/TemplatePackage/3.0/images/{{item.expanded ? 'minus12' : 'plus12'}}.png" alt="expand" />
+					</a>
+				</div>
+
+				<ul style="display:block;" ng-show="item.expanded">
+					<li ng-repeat="item in search.data">
+						<a href="#" ng-click="search.click(item.name, item.description, $event)"><span>{{item.description}}</span></a>
+					</li>
+				</ul>
+
+			</li>
+			<li>
+				<a href="#/topics">Browse by Topic</a>
+			</li>
+		</ul>
+
+		<div class="input-append">
+			<div id="searchTarget" class="row searchInputWrap">
+				<label class="search-box" for="searchBoxLocal">
+					<input type="text" id="searchBoxLocal" name="searchValue" ng-model="search.searchValue" placeholder="Search" ng-required="true" />
+					<span class="hidden">Search The CDC</span>
+				</label>
+				<input type="submit" ng-click="search.go()" class="submit searchBtn btn icon-search" value="&#xf002" />
+			</div>
+		</div>
+
+	</nav>
+
+</div><!--controller-->
+
+

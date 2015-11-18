@@ -1,0 +1,37 @@
+﻿<div>
+
+	<!-- standard CAROUSEL -->
+	<div id="carousel1" class="flexslider carousel">
+		<ul class="slides">
+			<li ng-repeat="item in carouselSlider.items" ng-init="carouselSlider.loaded($last)" class="slideThumbs">
+				<a href="#" ng-click="results.mediaDetail(item.id)">
+					<div>
+						<img ng-if="!item.altThumbnailUrl" ng-src="{{item.thumbnailUrl}}" alt="{{item.name}}" />
+						<img ng-if="item.altThumbnailUrl" ng-src="{{item.altThumbnailUrl}}" alt="{{item.altName}}" />
+					</div>
+					<p class="flex-caption" style="display:block;">
+						<span>{{item.name}}</span>
+					</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<!-- mobile SLIDER -->
+	<div id="slider1" class="flexslider slider">
+		<ul class="slides">
+			<li ng-repeat="item in carouselSlider.items" class="slideThumbs">
+				<a href="#" ng-click="results.mediaDetail(item.id)">
+					<div>
+						<img ng-if="!item.altThumbnailUrl" ng-src="{{item.thumbnailUrl}}" alt="{{item.name}}" />
+						<img ng-if="item.altThumbnailUrl" ng-src="{{item.altThumbnailUrl}}" alt="{{item.altName}}" />
+					</div>
+					<p class="flex-caption" style="display:block;">
+						<span>{{item.name}}</span>
+					</p>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+</div>

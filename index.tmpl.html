@@ -1,0 +1,359 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 8]><html class="no-js nav theme-teal lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js nav theme-teal lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]><html class="no-js nav theme-teal lt-ie10" lang="en"> <![endif]-->
+<!--[if !IE]><!-->
+<html ng-strict-di scroll class="no-js nav theme-teal" lang="en-us">
+<!--<![endif]-->
+
+<head>
+
+    <!-- <base href="/index.aspx" /> -->
+
+    <script>
+        window.console = window.console || {};
+        window.console.log = window.console.log || function () {};
+
+        if (document.location.toString().toLowerCase().indexOf('index.aspx') === -1) {
+            document.location = 'index.aspx' + document.location.search;
+        }
+    </script>
+
+    <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+    <meta charset="utf-8" />
+    <meta name="robots" content="index,follow" />
+    <!-- CDC Template Version -->
+    <meta property="cdc:template_version" content="3.0" />
+    <!-- Facebook Metadata -->
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:site_name" content="" />
+    <meta property="og:description" content="" />
+
+    <title>Public Health Media Library</title>
+
+    <!--#include virtual="/TemplatePackage/3.0/includes/head.html" -->
+
+    <meta name="description" content="CDC - Page with Navigation example description goes here" />
+    <meta name="keywords" content="CDC - Page with Navigation example keywords goes here" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/TemplatePackage/3.0/images/cdc-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/TemplatePackage/3.0/images/cdc-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/TemplatePackage/3.0/images/cdc-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon-precomposed" href="/TemplatePackage/3.0/images/cdc-touch-icon-57x57.png" />
+    <link rel="shortcut icon" href="/TemplatePackage/3.0/images/favicon.ico" />
+
+    <meta name="robots" content="index,follow" />
+    <meta property="cdc:template_version" content="3.0" />
+
+    <!-- Local CSS reference to allow overrides for the page/site -->
+    <link rel="stylesheet" href="css/_bundle.css?@@TIMESTAMP" />
+
+</head>
+
+<body data-ng-app="storefront" ng-controller="MainController as main">
+    <!--#include virtual="/TemplatePackage/3.0/includes/skipMenuNav.html" -->
+    <!-- <div ng-include="main.templatePackageMapping.skipMenuNav"></div>-->
+
+    <div id="wrapper">
+
+        <!--#include virtual="/TemplatePackage/3.0/includes/chromeFrame.html" -->
+        <!--<div ng-include="main.templatePackageMapping.chromeFrame"></div>-->
+
+        <header id="header">
+            <div class="container">
+                <!-- header -->
+                <div class="row">
+                    <div class="text-right topbar-content">
+                        <div ng-if="!main.isEcard" class="userNavBar">
+                            <div class="userNav ng-hide" ng-hide="main.pending">
+
+                                <div ng-if="!main.loggedIn" class="btn-group" ng-cloak>
+                                    <!-- <a class="btn btn-link btn-small btnSignIn" data-toggle="dropdown" href="#/login"> -->
+                                    <a class="btn btn-link btn-small btnSignIn" href="#/login">
+                                        <!--<a class="btn btn-link btn-small btnSignIn" href="#">-->
+                                        <span class="icon-signin"></span>
+                                        <span>Sign in</span>
+                                    </a>
+                                </div>
+
+                                <div ng-if="main.loggedIn" class="btn-group text-right" ng-cloak>
+                                    <a href="#/myaccount" class="btn btn-link btn-small btnAccount">
+                                        <span class="icon-user"></span>
+                                        <span class="">My Account</span>
+                                    </a>
+
+                                    <a href="#" class="btn btn-link btnSyndList" data-toggle="dropdown" ng-if="main.userData && main.userData.syndicationLists.length > 1">
+                                        <span class="icon-list-ul"></span>
+                                        <span class="userName dropdown-toggle" data-toggle="dropdown">Syndication List <span class="icon-angle-down" style="margin-right: 0;"></span></span>
+                                        <ul class="dropdown-menu syndicationlist pull-right">
+                                            <li ng-repeat="list in main.userData.syndicationLists" ng-click="main.syndicationList(list.syndicationListId)"><span style="padding: 0 5px 0 5px;">{{list.listName}} </span></li>
+                                        </ul>
+                                    </a>
+                                    <a href="#" class="btn btn-link btnSyndList" data-toggle="dropdown" ng-click="main.syndicationList()" ng-if="main.userData && main.userData.syndicationLists.length == 1">
+                                        <span class="syndicationlistPicker">
+                                            <span class="userName">Syndication List</span>
+                                        </span>
+                                    </a>
+
+                                    <a href="#" class="btn btn-link btn-small btnLogout" ng-click="main.logout()">
+                                        <span class="icon-signout"></span>
+                                        <span class="logout">Logout</span>
+                                    </a>
+                                </div>
+
+                                <div ng-if="!main.loggedIn" class="btn-group newUser" ng-cloak>
+                                    <!--<a class="btn btn-link btn-small btnCreateAccount" href="">-->
+                                    <a class="btn btn-link btn-small btnCreateAccount" href="#/newaccount">
+                                        <span class="icon-user"></span>New User
+                                    </a>
+                                </div>
+
+                                <!--<div class="btn-group dropdown btnSetLanguage">
+										<a class="btn btn-link btn-small" data-toggle="dropdown" href="#">
+											<i class="icon-globe"></i>English
+										</a>
+										<ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
+											<li><a tabindex="-1" href="#" data-language="eng">English</a></li>
+											<li><a tabindex="-1" href="#" data-language="esp">Spanish</a></li>
+										</ul>
+									</div>-->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- cdc -->
+                    <div id="logo" class="span14">
+                        <!--#include virtual="/TemplatePackage/3.0/includes/logo.html" -->
+                        <!--<div ng-include="main.templatePackageMapping.logo"></div>-->
+                    </div>
+                    <!-- search -->
+
+                    <div ng-if="!main.isEcard" class="a2z-button pull-right hidden-one hidden-two">
+                        <a href="#" id="azTab">A-Z Topic Index <span class="icon-angle-down"></span></a>
+                    </div>
+
+                </div>
+
+                <!--#include virtual="/TemplatePackage/3.0/includes/menu.html" -->
+                <!--<div ng-include="main.templatePackageMapping.menu"></div>-->
+
+                <div ng-if="!main.isEcard" ng-controller="AtozTopicLettersController as atozTopicLetters" ng-include="atozTopicLetters.template"></div>
+
+
+
+                <div id="searchArea-two-column" class="span24 searchbar hide hidden-three hidden-four">
+                    <!-- include virtual="/TemplatePackage/3.0/includes/searchBottom.html" -->
+                    <!-- <div id="template-package-searchBottom"></div>-->
+                </div>
+
+                <!--#include virtual="/TemplatePackage/3.0/includes/emergency.html" -->
+                <!--<div ng-include="main.templatePackageMapping.emergency"></div>-->
+
+                <!-- /header -->
+                <div class="titlebar">
+                    <h1><a ng-click="main.homeclick($event)" class="homeLink" style="cursor:pointer;">Public Health Media Library</a></h1>
+                </div>
+                <!--#include virtual="/TemplatePackage/3.0/includes/noscript.html" -->
+                <!--<div ng-include="main.templatePackageMapping.noscript"></div>-->
+            </div>
+        </header>
+
+        <!-- temp -->
+        <!-- <div ng-include="'app/error/template.html'"></div> -->
+
+        <div class="container">
+            <div id="content">
+                <div class="row">
+                    <!-- left nav -->
+                    <div id="nav-container" class="hidden-one hidden-two span5">
+
+                        <!-- todo: temp ecard; move into template!!! -->
+                        <nav ng-hide="!main.isEcard" id="left" class="hidden-one hidden-two ng-hide" ng-cloak>
+                            <ul id="nav-primary">
+                                <li>
+                                    <div class="pull-right nav-plusminus"></div>
+                                    <a href="index.aspx?mediaType=eCard&displayName=eCards"><i class="icon-envelope"></i>&nbsp; Send your own eCard</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!-- temp ecard -->                        
+                        <div ng-controller="NavFacetController as navFacet" ng-include="navFacet.template"></div>
+
+                        <!--<div ng-if="!main.isEcard" class="nav-related">
+                            <div class="module-typeA">
+                                <h3>Get Help</h3>
+                                <div ng-include src="'app/main/partial_gethelp.html'"></div>
+                            </div>
+                        </div>-->
+                    </div><!--nav-container-->
+
+                    <div id="share-bar" class="span19">
+                        <div class="socialmediabar">
+                            <div class="row">
+                                <div class="span8">
+                                    <!--#include virtual="/TemplatePackage/3.0/includes/socialMediaShare.html" -->
+                                    <!--<div ng-include="main.templatePackageMapping.socialMediaShare"></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- body -->
+                    <div id="body" class="span19 borderbox">
+
+                        <div id="alert-window" class="alert alert-error" style="display: none;">
+                            <button type="button" class="close">&times;</button>
+                            <span id="addlMessage"></span>
+                        </div>
+
+                        <div id="contentArea">
+
+                            <div id="TEMP_angular_view_reference">
+                                <div data-ng-view autoscroll="true"></div>
+                            </div>
+
+
+                            <!-- /end editable -->
+
+
+                            <!-- /end Related Nav Area -->
+                            <!-- Persistent Content Area -->
+                            <div id="content-secondary">
+                                <!-- begin editable -->
+                                <!-- // This area is optional 
+									// All content in the Right Column (except for Page Option links and GovD) will be moved to the Persistent Content Area upon migration
+									// This area will need to enabled if it is being used otherwise not included in the page build...
+									-->
+                                <div class="module-typeH">
+                                    <h3>Contact Us</h3>
+                                    <ul class="list-block">
+                                        <li>If you need technical help or would like to submit feedback, contact us at <a href="mailto:senderEmail14@email">senderEmail14@email</a></li>
+
+                                        <!--<li>For pages not already in the syndication catalog, you may <a href="#" class="help_requestPage">request a page to be syndicated</a>.</li>
+											<li>If you see issues with a syndicated page, you may report the problem.</li>-->
+                                    </ul>
+                                </div>
+                                <!-- /end editable -->
+                            </div>
+                            <!-- /end #content-secondary -->
+                        </div>
+                        <!-- /end #contentArea -->
+                    </div>
+                    <!-- /end #body -->
+                </div>
+
+                <div class="row">
+                    <div class="span24 visible-one">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span24">
+                        <!--#include virtual="/TemplatePackage/3.0/includes/pluginsLegend.html" -->
+                        <!--<div ng-include="main.templatePackageMapping.pluginsLegend"></div>-->
+                    </div>
+                </div>
+
+                <!-- date stamp -->
+                <div class="row" id="datestamp" itemscope="itemscope" itemtype="http://schema.org/WebPage">
+                    <div class="span24">
+                        <ul>
+                            <li class="last-reviewed">Page last reviewed:<span itemprop="lastReviewed">{{main.CURRENT_DATE}}</span></li>
+                            <li class="last-updated">Page last updated:<span itemprop="dateModified">{{main.CURRENT_DATE}}</span></li>
+                            <li class="content-source">Content source:
+									<ul>
+                                        <!--#include virtual="/TemplatePackage/3.0/includes/datestamp.html" -->
+                                        <!--<div ng-include="main.templatePackageMapping.datestamp"></div>-->
+                                        <!--#include virtual="/TemplatePackage/3.0/local/includes/contentSource.html" -->
+                                        <!--<div ng-include="main.templatePackageMapping.contentSource"></div>-->
+                                    </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- /end #content -->
+        </div>
+        <!-- / end .container -->
+
+        <footer id="footer">
+            <!--#include virtual="/TemplatePackage/3.0/includes/footerSocialMedia.html" -->
+            <!--<div ng-include="main.templatePackageMapping.footerSocialMedia"></div>-->
+            <div class="container">
+                <!--#include virtual="/TemplatePackage/3.0/includes/footerLogos.html" -->
+                <!--<div ng-include="main.templatePackageMapping.footerLogos"></div>-->
+                <ul class="cdcLinks">
+                    <!--#include virtual="/TemplatePackage/3.0/includes/footerCdcLinks.html" -->
+                    <!--<div ng-include="main.templatePackageMapping.footerCdcLinks"></div>-->
+                    <li class="local-contact"></li>
+                    <li class="contact">
+                        <!--#include virtual="/TemplatePackage/3.0/includes/footerGlobalContact.html" -->
+                        <!--<div ng-include="main.templatePackageMapping.footerGlobalContact"></div>-->
+                    </li>
+                </ul>
+            </div>
+        </footer>
+
+        <div id="totop" class="off visible-one">TOP</div>
+    </div>
+
+    <!--#include virtual="/TemplatePackage/3.0/includes/js-core.html" -->
+
+    <link type="text/css" rel="stylesheet" href="/TemplatePackage/3.0/css/lib/jquery-ui/jquery-ui.css" />
+    <script src="/TemplatePackage/3.0/js/libs/jquery-ui.js"></script>    
+
+
+    <!-- nneded for embed code -->
+    <script src='//.....[productionToolsServer]...../api/embed/html/js/embed-2.0.2.js'></script>
+    <!-- 3rd party libraries -->
+    <script src="js/libs/_bundle.js?@@TIMESTAMP"></script>
+    <!-- app -->
+    <script src="app/_bundle.js?@@TIMESTAMP"></script>
+
+    <!--#include virtual="/TemplatePackage/3.0/includes/js-modules.html" -->
+    <!--#include virtual="/TemplatePackage/3.0/includes/survey.html" -->
+    <!-- The following include is for including any local JS code to the page -->
+
+    <!--#include virtual="/TemplatePackage/3.0/local/includes/localJs.html" -->
+
+    <!-- required for recaptcha/mailforms, need to repackage into proper include -->
+    <script src="/TemplatePackage/3.0/js/libs/jquery-validation/jquery.validate.js"></script>
+    <script src="/TemplatePackage/3.0/js/libs/jquery-inputmask/jquery.inputmask.js"></script>
+    <script src="/TemplatePackage/3.0/js/libs/jquery-inputmask/jquery.inputmask.regex.extensions.js"></script>
+    <script src="/TemplatePackage/3.0/js/libs/jquery-json/jquery.json-2.4.min.js"></script>
+    <script src="mailforms/cdc.formValidation_new.js"></script>
+
+    <!--#include virtual="/TemplatePackage/3.0/includes/metricsTop.html" -->
+
+    <!-- The following include is where local metrics settings for SiteCatalyst and GA are made -->
+    <!--#include virtual="/TemplatePackage/3.0/local/includes/metricsSettings.html" -->
+    <!--#include virtual="/TemplatePackage/3.0/includes/metricsBottom.html" -->
+
+    <!-- The following include is for nav/breadcrumb rendering functionality and is needed in all templates -->
+    <!--#include virtual="/TemplatePackage/3.0/local/includes/leftNavRender.html" -->
+
+    <!--
+			In WCMS templates there is a local SSI for other content/assets that
+			must appear before the closing body tag.
+		-->
+    <!--include virtual="/~inc~/localRDBodyBottom.html" -->
+
+    <!-- The following include is for the carousel widget plugin -->    
+    <!--#include virtual="/TemplatePackage/3.0/includes/flexslider-css.html" -->
+    <!--#include virtual="/TemplatePackage/3.0/includes/flexslider.html" -->
+
+
+
+
+    <!-- Modal Holder, Do not remove -->
+    <div class="modalHolder"></div>
+    <div id="modalTos" class="modal hide modal-tos" data-backdrop="static"></div>
+    <div>Version {{main.VERSION}}</div>
+
+
+
+
+</body>
+</html>

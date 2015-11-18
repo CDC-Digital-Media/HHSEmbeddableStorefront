@@ -1,0 +1,36 @@
+﻿﻿<h2>Advanced Search</h2>
+
+<div class="searchAdvanced_wrap">
+    <form class="form-inline">
+        <label class="lblSearch" for="inputMediaType">Search</label>
+        <div class="btn-group">
+            <a class="btn dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="dropLabel">All Media Types</span> <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu mediaLaunchbar">
+            </ul>
+        </div>
+        <label class="lblFor" for="inputSearchString">for</label>
+        <input type="text" id="inputSearchString" placeholder="Search term">
+    </form>
+    
+    <h4>Topics</h4>
+    <form class="form-inline">
+        <label for="topicSearch">Choose Topics </label>
+        <input type="text" id="topicSearch" placeholder="Start typing to find topics">
+    </form>        
+    <ul id="selectedTopicList" style="width:400px;"></ul>
+
+    <h4>Additional options</h4>
+    <label for="inputContentLanguage">Content Language</label>
+    <select id="inputContentLanguage" class="span4">
+        <option selected="selected">English</option>
+        <option>Spanish</option>
+    </select>
+
+    <div class="btnControls">
+        <a class="btnSearchReset btn btn-default" href="">Reset</a>
+        <a class="btn btnSearchAdvanced btn-primary" href="">Search</a>
+    </div>
+
+</div>

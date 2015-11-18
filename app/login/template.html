@@ -1,0 +1,79 @@
+﻿<div class="login">
+    <h2>Sign in</h2>
+
+    <div class="row sf_form">
+        <div class="span12">
+            <!--<div class="alert alert-success resetSuccess hide">
+				<span class="msg"></span>
+			</div>-->
+
+            <div ng-hide="!login.addingMedia" class="valMsg_global">
+                <span><span class="icon-ok-sign icon success"></span>We've found content in our system that matches your request. Please log in so we can add that content to your list of syndication items.</span>
+            </div>
+
+            <div ng-hide="login.pwreset == null" class="valMsg_global">
+                <span><span class="icon-ok-sign icon success"></span>Your password has been successfully reset.  You can now login with your new password.</span>
+            </div>
+
+            <div class="form-horizontal">
+                <form name="login.form" novalidate>
+                    <fieldset>
+
+                        <!-- required info -->
+                        <div class="requiredNote"><small><span class="warning">*</span>required</small></div>
+
+                        <!-- email input -->
+                        <div class="control-group">
+                            <label class="control-label" for="userEmail">Email Address<span class="warning">*</span></label>
+                            <div class="controls">
+                                <input type="email" id="userEmail" name="userEmail" ng-model="login.user.email" placeholder="Email Address" class="input-xlarge" maxlength="50" ng-required="true" />
+                            </div>
+                            <!-- email validation -->
+                            <div ng-if="login.form.$submitted" ng-messages="login.form.userEmail.$error" class="valMsg">
+                                <span ng-message="required">Please enter your email address</span>
+                                <span ng-message="email">This is not a valid email address</span>
+                            </div>
+                        </div>
+
+                        <!-- password input -->
+                        <div class="control-group">
+                            <label class="control-label" for="userPassword">Password<span class="warning">*</span></label>
+                            <div class="controls">
+                                <input type="password" id="userPassword" name="userPassword" ng-model="login.user.password" placeholder="Password" class="input-xlarge" maxlength="15" ng-required="true" />
+                            </div>
+                            <!-- password validation -->
+                            <div ng-if="login.form.$submitted" ng-messages="login.form.userPassword.$error" class="valMsg">
+                                <span ng-message="required">Please enter your password</span>
+                            </div>
+                        </div>
+
+                        <!-- submit button -->
+                        <div class="control-group">
+                            <div class="controls typeG">
+                                <input type="submit" ng-click="login.signIn()" class="btnSubmitCredentials btn btn-primary" value="Sign in" />
+                                <div class="pwreset"><a href="#/resetpasswordrequest" class="hlLoginReset">Forgot Password</a></div>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                                <!-- login pending message -->
+                                <!-- todo: need a spinner here as well -->
+                                <span ng-show="login.pending" class="valMsg_global"><span class="icon-spinner icon-spin"></span>Logging in ...</span>
+
+                                <!-- error message -->
+                                <div ng-if="login.form.$submitted" ng-messages="login.form.$error" class="valMsg">
+                                    <span ng-message="serverError">{{login.errorMessage}}</span>
+                                </div>                            
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+        <div class="span5 text-center">
+            <a href="#/newaccount"><img src="images/26_login_message.png" alt="Sign in with your existing credentials, or create new account" /></a>
+        </div>
+    </div>
+
+</div>

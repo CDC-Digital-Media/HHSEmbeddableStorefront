@@ -1,0 +1,84 @@
+﻿<div class="clearfix">
+    <h1>Welcome, {{ syndicationList.userName }} <span class="pull-right btnNeedHelp"><a href="#" ng-click="syndicationList.openHelp()"><i class="icon-question-sign"></i>Need Help?</a></span></h1>
+</div>
+
+<div class="alert alert-success" ng-if="syndicationList.showHelp">
+    <button type="button" class="close" ng-click="syndicationList.closeHelp()">×</button>
+    <h4>This is your content syndication list!</h4>
+    <p>
+        This page is always available by clicking on <strong>&quot;Syndication List&quot;</strong> in the top right corner of the screen. From here you can: 
+		<ul>
+            <li>See the content that you've selected for syndication</li>
+            <li>Collaborate with other members in your organization</li>
+            <li>Manage your account information</li>
+        </ul>
+    </p>
+    <p>
+        This page will show you the content that you've selected for syndication within the selected organization and domain. If you are a member of multiple 
+				organizations, you'll be able to choose the organization and domain that you want to work with.
+    </p>
+    <p>
+        Once you're logged in, syndication media is displayed with a 'plus' icon. Click this icon once to add
+				the media to your list. Click it again to remove the media from your list.
+		
+    </p>
+    <div class="text-center">
+        <img alt="" src="images/help_addtolist_0.png">
+        &nbsp; <i class="icon-angle-right" style="font-size: 14pt;"></i>&nbsp;
+        <img alt="" src="images/help_addtolist_1.png">
+    </div>
+</div>
+
+<div class="alert alert-success" ng-if="syndicationList.showMediaAdded">
+    The media your requested has been added to your syndication list!
+</div>
+
+<div class="row">
+    <div class="pagination pull-right">
+        <ul ng-if="syndicationList.meta.pagination.totalPages > 1">
+            <li ng-class="{'disabled' : syndicationList.meta.pagination.pageNum == 1}" ng-click="syndicationList.prev()"><a href="#">Prev</a></li>
+            <li ng-if="syndicationList.showStartEllipse" class="elipsis"><a href="#">...</a></li>
+            <li ng-repeat="page in syndicationList.pages" ng-click="syndicationList.page(page.pageNumber)" ng-class="{'active' : syndicationList.currentPage == page.pageNumber}"><a href="#">{{page.pageNumber}}</a></li>
+            <li ng-if="syndicationList.showEndEllipse" class="elipsis"><a href="#">...</a></li>
+            <li ng-class="{'disabled': syndicationList.meta.pagination.pageNum == syndicationList.meta.pagination.totalPages}" ng-click="syndicationList.next()"><a href="#">Next</a></li>
+        </ul>
+    </div>
+    <div class="pull-left" style="padding-left:20px;" ng-show="syndicationList.meta.pagination.count > -1" class="ng-hide"><b>{{syndicationList.meta.pagination.total}}</b> items chosen for: <b>{{syndicationList.$rootScope.syndList.listName}}</b></div>
+</div>
+
+<div class="selectedMedia">
+    <p ng-show="syndicationList.meta.pagination.count === 0" class="ng-hide" style="padding:30px;"><em>No media has been added to this syndication list.</em></p>
+    <div class="progressIndicator"></div>
+
+    <div style="clear: both;">
+        <div>
+
+            <div ng-repeat="item in syndicationList.data" class="mediaListItem clearfix">
+                <div class="deleteSpinner" style="position:absolute; background-color:white; opacity:.7; padding:15px 0px 15px 0px;" ng-show="item.deleting">
+                    <div style="background: url('../images/ajax-loader.gif') no-repeat center; width:inherit; height:inherit;"></div>
+                </div>
+                <div class="span14 mediaListDesc clearfix">
+                    <div class="mediaListThumb pull-left">
+                        <a href="#/media/id/{{item.id}}">
+                            <img alt="{{item.name}}" src="{{item.altThumbnailUrl ? item.altThumbnailUrl : item.thumbnailUrl}}" data-media-id="{{item.id}}">
+                        </a>
+                    </div>
+                    <div class="mediaListDesc-col">
+                        <div class="title"><span title="Image" class="mediaicon-{{item.mediaType.toLowerCase()}}"></span>&nbsp;{{item.name}}</div>
+                        <div class="description">{{item.description}}</div>
+                        <div class="lastupdated">{{syndicationList.formatDate(item.datePublished)}}</div>
+                    </div>
+                </div>
+                <div class="span3 pull-right">
+                    <div class="typeG mediaList-getcode">
+                        <a class="button" href="#/media/id/{{item.id}}/embed/1">Get Embed Code</a>
+                    </div>
+                    <div class="mediaList-action">
+                        <a href="#" ng-click="syndicationList.removeMedia(item.id)"><i class="icon-remove-sign btn-delete"></i>Remove</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

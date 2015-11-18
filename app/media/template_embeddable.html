@@ -1,0 +1,11 @@
+﻿<div class="embedTitleBar primary-bg-color">
+    <h3 class="embedTitle pull-left">{{media.embeddableTitle}}</h3>
+</div>
+<div class="mediaSyndOptions" ng-if="!media.pending">
+
+    <span>
+        <i class="icon-angle-left" /> <a class="returnToResults" href="#" ng-click="media.goBack()"> Return to Previous Page</a>
+    </span>
+</div>
+<div class="progressIndicator" ng-if="media.pending"></div>
+<div class="detail"></div>

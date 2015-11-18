@@ -1,0 +1,58 @@
+﻿<div class="registration">
+
+    <div ng-show="newAccount.migration" class="migrationBanner">
+        <h3>Welcome! Here's What's New</h3>
+        <ul>
+            <li>Syndicate multiple media types:<br />
+                Badges, Buttons, HTML Content, Images, Infographics, Microsites, Videos, Widgets &amp; more to come!</li>
+            <li>Shared syndication lists across your organization</li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="span12">
+
+            <form name="newAccount.form">
+                <div ng-show="newAccount.step === 1 && !newAccount.migration" ng-controller="CreateLoginController as createLogin" ng-include="createLogin.template"></div>
+                <div ng-show="newAccount.step === 2 && !newAccount.migration" ng-controller="CreateContactController as createContact" ng-include="createContact.template"></div>
+                <div ng-show="newAccount.step === 3 || ( newAccount.migration && newAccount.step !== 4 )" ng-controller="ExistingOrganizationController as existingOrganization" ng-include="existingOrganization.template"></div>
+                <div ng-show="newAccount.step === 4" ng-controller="CreateOrganizationController as createOrganization" ng-include="createOrganization.template"></div>
+
+
+                <div class="control-group">
+                    <div class="controls typeG">
+                        <input type="button" ng-show="newAccount.step > 1 && !newAccount.migration" ng-click="newAccount.prev()" value="&lt; Back" class="btn btn-primary btnBack" />
+                        <input type="button" ng-show="newAccount.step < 3" ng-click="newAccount.next()" value="Next &gt;" class="btn btn-primary btnNext" />
+                        <input type="button" ng-show="newAccount.step >= 3" ng-click="newAccount.submit()" value="Save" class="btn btn-primary btnSave" />
+                    </div>
+                </div>
+
+                <!--
+                <span ng-show="newAccount.pending" class="valMsg_global"><span class="icon-spinner icon-spin"></span>Saving ...</span>
+                
+                <div ng-if="newAccount.form.$submitted" ng-messages="newAccount.form.$error" class="valMsg_global">
+                    <span ng-message="serverError">{{newAccount.errorMessage}}</span>
+                </div>
+                -->
+
+                <div class="control-group">
+                    <!-- login pending message -->
+                    <!-- todo: need a spinner here as well -->
+                    <span ng-show="newAccount.pending" class="valMsg_global"><span class="icon-spinner icon-spin"></span>Saving ...</span>
+
+                    <!-- error message -->
+                    <div ng-if="newAccount.form.$submitted" ng-messages="newAccount.form.$error" class="valMsg">
+                        <span ng-message="serverError">{{newAccount.errorMessage}}</span>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="span4 offset1">
+            <div ng-show="newAccount.migration"><a href="mailto: senderEmail14@email?subject=Storefront - 2.6 Migration">
+                <img src="images/26_signup_help.png" alt="Having trouble? Email us, we can help!" /></a></div>
+        </div>
+    </div>
+</div>

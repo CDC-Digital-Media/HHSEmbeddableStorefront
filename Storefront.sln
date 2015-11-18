@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Storefront", "Storefront.csproj", "{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Development|Any CPU = Development|Any CPU
+		Prototype_Link|Any CPU = Prototype_Link|Any CPU
+		Release|Any CPU = Release|Any CPU
+		Test|Any CPU = Test|Any CPU
+		tools-link|Any CPU = tools-link|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Development|Any CPU.ActiveCfg = dev|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Development|Any CPU.Build.0 = dev|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Prototype_Link|Any CPU.ActiveCfg = prototype|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Prototype_Link|Any CPU.Build.0 = prototype|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Test|Any CPU.ActiveCfg = Test|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.Test|Any CPU.Build.0 = Test|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.tools-link|Any CPU.ActiveCfg = Test|Any CPU
+		{C7FA735C-2856-4AC7-BCA0-4EEC1AF33418}.tools-link|Any CPU.Build.0 = Test|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = .
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,74 @@
+﻿
+<div class="feedDetailWrap">
+	<span>
+        <i class="icon-angle-left" /> <a class="returnToResults" href="javascript:window.history.back();"> Return to Previous Page</a>
+    </span>
+	<div ng-show="landing.showSpinner" class="progressIndicator"></div>
+
+	<h2>{{landing.landingDetail.name}}</h2>
+
+	<div class="row" ng-hide="landing.showSpinner">
+		<div class="span14">
+			<p>{{landing.landingDetail.description}}</p>
+
+			<div><a href="#" class="btn btn-small btn-primary" ng-click="landing.showSubscribe = !landing.showSubscribe"><span class="icon-star"></span> Subscribe to this Feed</a></div>
+			<div class="subscribeBox" ng-show="landing.showSubscribe">
+				<a href="#" class="pull-right icon-remove" ng-click="landing.showSubscribe = !landing.showSubscribe"></a>
+				To subscribe, use this <a ng-href="{{landing.landingDetail.url | convertExtToRss}}" target="_blank">subscribe link</a> or copy and paste this address into your RSS reader.<br />
+				<input type="text" class="input-xxlarge" value="{{landing.landingDetail.url | convertExtToRss}}" readonly />
+			</div>
+
+			<br />
+			<div ng-show="landing.showChildItems">
+				<h3>Feed Items</h3>
+				<div class="module-typeG">
+					<ul class="list-block">
+						<li class="feedItem" ng-repeat="child in landing.landingDetail.children">
+
+							<div class="row">
+								<div class="span3"><img ng-src="{{child.thumbnailUrl || 'images/thumb_nofeedthumb.png'}}" alt="{{child.name}}" class="feedItemImg" /></div>
+								<div class="span9">
+									<h4 class="feedItemTitle">{{child.name}}</h4>
+									{{child.description}}
+								</div>
+							</div>
+
+							<h5 ng-if="child.enclosures.length > 0" class="tp-clearfix">Additional Resources</h5>
+							<ul ng-if="child.enclosures.length > 0">
+								<li ng-repeat="enclosure in child.enclosures"><a href="{{enclosure.resourceUrl}}" target="_blank">{{enclosure.resourceUrl}}</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div><!--span14-->
+		<div class="span5">
+			<div class="module-typeA feedDescription">
+				<h3>Feed Info</h3>
+				<div>
+					<p>
+						<small>
+							<div><strong>URL:</strong> <a ng-href="{{landing.landingDetail.targetUrl}}" target="_blank">{{landing.landingDetail.targetUrl}}</a></div>
+							<div><strong>Topics:</strong> <span ng-repeat="topic in landing.landingDetail.tags"><a href="#" ng-click="landing.selectCategory(topic.id, topic.name)">{{topic.name}}</a><span ng-if="landing.landingDetail.tags.length > 1 && !$last">,</span> </span></div>
+							<div><strong>Author:</strong> {{landing.landingDetail.author}}</div>
+							<div><strong>Publication Date:</strong> {{landing.landingDetail.datePublished | formatDate}}</div>
+							<div><strong>Last Updated:</strong> {{landing.landingDetail.dateModified | formatDate}}</div>
+							<div><strong>Attribution:</strong> <a ng-href="{{landing.landingDetail.source.websiteUrl}}" target="_blank">{{landing.landingDetail.source.acronym}}</a></div>
+							<!--<div><strong>Location:</strong> <span class="location"></span></div>-->
+						</small>
+					</p>
+					<p class="clearfix">
+						<a href="#" data-socialmedia="facebook" class="facebook pull-left" title="Share on FaceBook"><span class="sprite-24-facebook"></span></a>
+						<a href="#" data-socialmedia="twitter" class="twitter pull-left" title="Share on Twitter"><span class="sprite-24-twitter"></span></a>
+						<a href="#" data-socialmedia="google" class="google pull-left icon-google-plus-sign" title="Share on Google+"></a>
+					</p>
+				</div>
+			</div>
+
+		</div><!--span5-->
+	</div><!--row-->
+
+</div>
+
+<!--{{landing.feedDetail.}}-->

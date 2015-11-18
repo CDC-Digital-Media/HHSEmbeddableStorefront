@@ -1,0 +1,19 @@
+﻿Syndication request from the Media Library
+
+Email: [requestEmail]
+Domain: [Host]
+
+Requested Url: 
+[requestPage_0]
+[requestPage_1]
+[requestPage_2]
+[requestPage_3]
+[requestPage_4]
+[requestPage_5]
+[requestPage_6]
+[requestPage_7]
+[requestPage_8]
+[requestPage_9]
+
+
+

@@ -1,0 +1,8 @@
+﻿<div class="a2z-bar">
+	<ul>
+		<li ng-repeat="item in atozTopicLetters.items">
+			<a ng-if="item.hasItems" href="#/atoztopiclist/{{item.letter | lowercase}}">{{item.letter | uppercase}}</a>
+			<a ng-if="!item.hasItems" class="disabled">{{item.letter | uppercase}}</a>
+		</li>
+	</ul>
+</div>

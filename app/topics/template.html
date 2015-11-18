@@ -1,0 +1,38 @@
+﻿<div class="span18 topicSelector">
+	<h2>Topics</h2>
+
+	<div class="row">
+		<div class="span14">
+			<div class="module-typeB">
+				<h3>Quick Search</h3>
+				<p style="margin:0; padding-top:4px;"><input type="text" class="input-block-level topicAutosuggest" placeholder="Begin typing topic name..." /></p>
+			</div>
+			
+			<div class="module-typeF">
+				<h3>Main Categories</h3>
+				<div>
+					<div class="listContainer" style="display:table;">
+						<div ng-show="topics.showSpinnerMain" class="progressIndicator"></div>
+						<ul class="list-ordered col2">
+							<li ng-repeat="item in topics.data"><a href="#" ng-click="topics.selectCategory(item.id, item.name); select(item)" ng-class="{active: isActive(item)}">{{item.name}}</a></li>
+						</ul>
+					</div><!--listContainer-->
+				</div><!--?-->
+			</div><!--module-typeF-->
+		</div><!--span12-->
+	</div><!--row-->
+
+	<div class="module-typeA" ng-show="topics.selectedCategory">
+		<h3>{{topics.selectedTitle}} <span><a href="#" ng-click="topics.browse(topics.selectedId)" class="titleBtw"> &gt; Browse this category</a></span></h3>
+		<div>
+			<div ng-show="topics.showSpinnerSub" class="progressIndicator"></div>
+			<div class="listContainer" style="display:table;">
+				<ul class="list-ordered col3">
+					<li ng-repeat="subtopic in topics.subtopics"><a href="#" ng-click="topics.selectCategory(subtopic.id, subtopic.name)">{{subtopic.name}}</a></li>
+				</ul>
+			</div><!--listContainer-->
+		</div><!--?-->
+	</div><!--module-typeF-->
+
+
+</div>

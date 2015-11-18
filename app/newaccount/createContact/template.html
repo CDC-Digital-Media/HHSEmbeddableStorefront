@@ -1,0 +1,52 @@
+﻿<div class="sf_form">
+	<h1>Contact Information</h1>
+	<div class="registrationForm">
+		<!--<div class="alert alert-error contactInfoValidation hide">
+			<span class="msg">Message</span>
+		</div>-->
+		<div class="form-horizontal">
+			<div ng-form="createContact.form">
+				<fieldset>
+
+					<div class="requiredNote" style="float:right;">
+						<span class="warning">*</span>required
+					</div>
+
+					<!-- first name input -->
+					<div class="control-group">
+						<label for="contactFirstName" class="control-label">First Name<span class="warning">*</span></label>
+						<div class="controls">
+							<input type="text" id="contactFirstName" name="contactFirstName" ng-model="createContact.contact.firstName" placeholder="First Name" class="input-xlarge" maxlength="256" ng-required="true" autofocus="autofocus" />
+						</div>
+						<!-- first name validation -->
+						<!--<div ng-if="createAccount.form.$submitted" ng-messages="createAccount.form.contactFirstName.$error">-->
+						<div ng-show="createContact.form.showValidationMessages" ng-messages="createContact.form.contactFirstName.$error" class="valMsg">
+							<span ng-message="required">Please enter your first name</span>
+						</div>
+					</div>
+
+					<!-- middle name input -->
+					<div class="control-group">
+						<label for="contactMiddleName" class="control-label">Middle Name</label>
+						<div class="controls">
+							<input type="text" id="contactMiddleName" name="contactMiddleName" ng-model="createContact.contact.middleName" placeholder="Middle Name" class="input-xlarge" maxlength="256" />
+						</div>
+					</div>
+
+					<!-- last name input -->
+					<div class="control-group">
+						<label for="contactLastName" class="control-label">Last Name<span class="warning">*</span></label>
+						<div class="controls">
+							<input type="text" id="contactLastName" name="contactLastName" ng-model="createContact.contact.lastName" placeholder="Last Name" class="input-xlarge" maxlength="256" ng-required="true" />
+						</div>
+						<!-- last name validation -->
+						<div ng-show="createContact.form.showValidationMessages" ng-messages="createContact.form.contactLastName.$error" class="valMsg">
+							<span ng-message="required">Please enter your last name</span>
+						</div>
+					</div>
+
+				</fieldset>
+			</div>
+		</div>
+	</div>
+</div>

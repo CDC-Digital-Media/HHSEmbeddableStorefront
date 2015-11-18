@@ -1,0 +1,88 @@
+/*VP4*/
+@media screen and (min-width: 1200px) {
+	#body .flexslider.slider {display:none;}
+}
+
+/*VP3*/
+@media screen and (min-width: 980px) and (max-width: 1199px) {
+	.homeLeftCol {width:95% !important;}
+	.homeRightCol {
+		width:675px;
+		margin-left:0;
+	}
+	#body .flexslider.slider {display:none;}
+	#searchFormLocal .span12 {width:600px !important;}
+
+	form[id*=searchForm] input[type=text] {width:430px !important;}
+
+	.searchInputWrap {
+		input {width:115px !important;}
+	}
+}
+
+/*VP2*/
+@media screen and (min-width: 768px) and (max-width: 979px) {
+	html.nav #wrapper .span5.homeRightCol {width:675px !important;}
+	html.nav #wrapper .homeLeftCol {width:90% !important;}
+	
+	.homeRightCol {margin-left:0;}
+
+	html.nav #wrapper #searchFormLocal .span12 {width:600px !important;}
+	html.search #vp1-search-button {display:none;}
+	#body .flexslider.slider {display:none;}
+
+	form[id*=searchForm] input[type=text] {width:400px !important;}
+}
+
+/*VP1*/
+@media (max-width: 767px) {
+	#content .homeLeftCol {margin-left:0;}
+	.featuredContent {padding-left:0;}
+	#content .results {margin:0;}
+	.content-offset {margin:0;}
+
+	html.nav #wrapper #searchFormLocal .span12 {margin-bottom:8px !important;}
+	form[id*=searchForm] input[type=text] {width:250px !important;}
+
+	html.search #vp1-search-button {display:none;}
+
+	#mobile-menu ul li {width:135px;}
+
+	#content .homeRightCol  {
+		.homeTop5 {
+			ul {min-height: 0 !important;}
+		}
+	}
+	#body .flexslider.carousel {display:none;}
+}
+
+/* Smartphones (portrait) ----------- */
+@media (max-width: 500px) {
+	#content .homeLeftCol {margin-left:0;}
+	#header .titlebar span {display:none;}
+	#content .homeText h2 {font-size:23px;}
+	#content .homeText img {width:45%;}
+	.featuredContent {padding-left:0;}
+	#content .results {margin:0;}
+	.content-offset {margin:0;}
+
+	.localSearch {height:auto; margin-bottom:15px;}
+	#searchFormLocal {margin-bottom:8px;}
+	#searchFormLocal .searchInputWrap {text-align:left; width:100% !important;}
+	#searchTarget {width:100% !important;}
+	label.search-box {width:90% !important;}
+
+	#searchArea {
+		form[id*=searchForm] input[type=text] {width:95% !important;}
+
+		.btn-group {
+			display:block;
+
+			.dropdown-toggle {
+				width:95%;
+				margin-bottom:10px;
+			}
+		}
+	}
+
+}

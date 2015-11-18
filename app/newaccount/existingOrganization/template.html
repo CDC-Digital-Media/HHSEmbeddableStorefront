@@ -1,0 +1,205 @@
+﻿<div class="sf_form">
+	<h1>Organization</h1>
+	<div class="organization">
+
+		<div class="chooseOrg">
+			<p class="explanation">If your organization is already syndicating content, it displays in the list below. You'll want to register under your organization's existing name, so that you can coordinate with others who are also syndicating content. If your organization is not already in the list, you may add it.</p>
+				<!--<div class="alert alert-error existingOrganizationValidation hide">
+					<span class="msg">Message</span>
+				</div>-->
+				<div class="form-horizontal">
+					<div ng-form="existingOrganization.form">
+						<fieldset>
+							<div class="requiredNote" style="float:right;">
+								<span class="warning">*</span>required
+							</div>
+							<div class="control-group" ng-init="existingOrganization.loadTypeAheadOrganizations()">
+								<label for="existingOrganizationName" class="control-label">Organization<span class="warning">*</span></label>
+								<div class="controls">
+									<input type="text" id="existingOrganizationName" name="existingOrganizationName" placeholder="Start typing to find matching names" class="input-xlarge" autocomplete="off" />
+									<p class="help-block">Did not find your organization? 
+									<a id="atozOrg" href="#" ng-click="existingOrganization.openOrganizations()">Try the A-Z Organization Index.</a></p>
+								</div>
+								<!-- organization name validation -->
+								<div ng-show="existingOrganization.form.showValidationMessages" ng-messages="existingOrganization.form.$error" class="valMsg">
+									<span ng-message="organizationRequired">Please tell us your organization name</span>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="form-horizontal cmdButtons">
+					<fieldset>
+						<div class="control-group">
+							<div class="controls">
+								<input type="button" ng-click="newAccount.step = 4" class="btn btn-default btn-small btnAddNewOrg" value="Add a New Organization" />
+							</div>
+						</div>
+					</fieldset>
+				</div>
+			</div>
+
+			<!-- modal window -->
+			<div id="atozModal" class="modal hide modal-registration in" aria-hidden="false">
+			<!--<div id="atozModal" class="modal hide modal-registration in" aria-hidden="false" style="display:block;">-->
+				<div class="modal-header">
+					<a class="close icon-remove" data-dismiss="modal" style="text-decoration:none;"></a>
+					<h3>A-Z Organization Index</h3>
+				</div>
+				<div class="modal-body">
+					<p></p>
+					<div id="atozList-nav">
+						<div class="ln-letters">
+							<a href="#" ng-repeat="letter in existingOrganization.atozata" ng-click="existingOrganization.selectLetter(letter, $event)">{{letter}}</a>
+						</div>
+					</div>
+					<ul id="atozList">
+						<li ng-repeat="item in existingOrganization.organizationDataLetter" class="ln--" style="display:list-item;">
+							<a href="#" ng-click="existingOrganization.selectOrganization(item.id, $event)">{{item.name}}</a>
+							<span class="cityState">
+								<span ng-if="item.county">{{item.county}}, </span>
+								<span>{{item.stateProvince}}
+							</span>
+						</li>
+
+						<li ng-show="existingOrganization.orgsNotFound"><em>No organizations of that letter were found</em></li>
+					</ul>
+
+				</div>
+				<div class="modal-footer">
+					<a href="#" data-dismiss="modal" class="btn btn-primary">Close</a>
+				</div>
+			</div>
+		</div>
+
+		<div ng-show="existingOrganization.organizationData.name" class="orgSelected">
+			<div class="row">
+				<div class="span3 text-right">
+					<strong>You've selected:</strong>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">Organization Name</div>
+				<div class="span6 orgName">{{existingOrganization.organizationData.name}}</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">Organization Type</div>
+				<div class="span6 orgType">{{existingOrganization.organizationData.type}}</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">Country</div>
+				<div class="span6 orgCountry">{{existingOrganization.organizationData.country}}</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">State/Province</div>
+				<div class="span6 orgState">{{existingOrganization.organizationData.stateProvince}}</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">County/Region</div>
+				<div class="span6 orgCounty">{{existingOrganization.organizationData.county}}</div>
+			</div>
+			<div class="row">
+				<div class="span3 text-right">Web Site Domain(s)</div>
+				<div class="span6 orgDomain">
+					<div ng-repeat="item in existingOrganization.organizationData.website">
+						<span>{{item.url}}</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-horizontal cmdButtons hide">
+				<fieldset>
+					<div class="control-group">
+						<div class="controls">
+							<input type="button" class="btn btn-default btn-small btnCancel orgSelected" value="Choose a Different Organization" />
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<div id="atozModal" class="modal hide modal-registration in" aria-hidden="false" style="display:block;">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal" style="text-decoration:none;">×</a>
+		<h3>A-Z Organization Index</h3>
+	</div>
+	<div class="modal-body">
+		<p></p>
+			<div id="atozList-nav">
+				<div class="ln-letters">
+					<a class="all ln-selected" href="#">ALL</a>--> <!-- all removed
+					<a class="_ ln-disabled" href="#">0-9</a>
+					<a class="a ln-disabled" href="#">A</a>
+					<a class="b ln-disabled" href="#">B</a>
+					<a class="c" href="#">C</a>
+					<a class="d" href="#">D</a>
+					<a class="p" href="#">P</a>
+					<a class="q ln-disabled" href="#">Q</a>
+					<a class="r ln-disabled" href="#">R</a>
+					<a class="s" href="#">S</a>
+					<a class="w ln-disabled" href="#">W</a>
+					<a class="x ln-disabled" href="#">X</a>
+					<a class="y ln-disabled" href="#">Y</a>
+					<a class="z ln-disabled ln-last" href="#">Z</a>
+				</div>
+			</div>
+			<ul id="atozList">
+				<li class="ln--" style="display: list-item;">
+					<a href="#" data-orgid="495">@sinadiccion</a><span class="cityState">Mexico, Distrito Federal</span>
+				</li>
+				<li class="ln-c" style="display: list-item;">
+					<a href="#" data-orgid="2">CDC</a><span class="cityState">Atlanta, GA</span>
+				</li>
+				<li class="ln-c" style="display:list-item;">
+					<a href="#" data-orgid="6766">Childrens Hospital</a><span class="cityState">, Indiana</span>
+				</li>
+				<li class="ln-c" style="display:list-item;">
+					<a href="#" data-orgid="6250">Comics Are Great</a><span class="cityState">, California</span>
+				</li>
+				<li class="ln-d" style="display:list-item;">
+					<a href="#" data-orgid="68">Darien Health Department</a><span class="cityState">Darien, CT</span>
+				</li>
+				todo: do we need this?
+				<li class="ln-no-match" style="display: none;">No matching entries</li></ul></div>
+	<div class="modal-footer">
+		<a href="#" data-dismiss="modal" class="btn">Close</a>
+	</div>
+</div>
+-->
+
+
+
+
+
+
+
+<!--
+<div id="atozModal" class="modal hide modal-registration">
+	<div class="modal-header">
+		<a class="close" data-dismiss="modal" style="text-decoration:none;">×</a>
+		<h3>A-Z Organization Index</h3>
+	</div>
+	<div class="modal-body">
+		<p></p>
+	<div id="atozList-nav"><div class="ln-letters"><a class="all" href="#">ALL</a><a class="_ ln-disabled" href="#">0-9</a><a class="a ln-disabled" href="#">A</a><a class="b ln-disabled" href="#">B</a><a class="c" href="#">C</a><a class="d" href="#">D</a><a class="e" href="#">E</a><a class="f ln-disabled" href="#">F</a><a class="g ln-disabled" href="#">G</a><a class="h" href="#">H</a><a class="i" href="#">I</a><a class="j" href="#">J</a><a class="k ln-disabled" href="#">K</a><a class="l" href="#">L</a><a class="m" href="#">M</a><a class="n" href="#">N</a><a class="o" href="#">O</a><a class="p" href="#">P</a><a class="q ln-disabled" href="#">Q</a><a class="r ln-disabled" href="#">R</a><a class="s" href="#">S</a><a class="t" href="#">T</a><a class="u ln-disabled" href="#">U</a><a class="v ln-disabled" href="#">V</a><a class="w ln-disabled" href="#">W</a><a class="x ln-disabled" href="#">X</a><a class="y ln-disabled" href="#">Y</a><a class="z ln-disabled ln-last" href="#">Z</a></div></div><ul id="atozList"><li class="ln--"><a href="#" data-orgid="495">@sinadiccion</a><span class="cityState">Mexico, Distrito Federal</span></li><li class="ln-c"><a href="#" data-orgid="2">CDC</a><span class="cityState">Atlanta, GA</span></li><li class="ln-c"><a href="#" data-orgid="6766">Childrens Hospital</a><span class="cityState">, Indiana</span></li><li class="ln-c"><a href="#" data-orgid="6250">Comics Are Great</a><span class="cityState">, California</span></li><li class="ln-d"><a href="#" data-orgid="68">Darien Health Department</a><span class="cityState">Darien, CT</span></li><li class="ln-e"><a href="#" data-orgid="177">East Cooper Medical Center</a><span class="cityState">Mount Pleasant, SC</span></li><li class="ln-h"><a href="#" data-orgid="6">HHS</a><span class="cityState">Washington, D. C., DC</span></li><li class="ln-i"><a href="#" data-orgid="5880">I am a friggin new org</a><span class="cityState"></span></li><li class="ln-i"><a href="#" data-orgid="5879">I am a new org</a><span class="cityState">, Alaska</span></li><li class="ln-i"><a href="#" data-orgid="7069">I'm a new Org</a><span class="cityState">, Republika Srpska</span></li><li class="ln-i"><a href="#" data-orgid="7119">I'm still an Org</a><span class="cityState">, Arkansas</span></li><li class="ln-j"><a href="#" data-orgid="7">Joe's Grocery</a><span class="cityState">Washington, D. C., DC</span></li><li class="ln-l"><a href="#" data-orgid="5949">Longy McOrg</a><span class="cityState">, California</span></li><li class="ln-m"><a href="#" data-orgid="6252">Mice are Wonderful</a><span class="cityState">, Florida</span></li><li class="ln-m"><a href="#" data-orgid="592">Monroe County WIC</a><span class="cityState">Woodsfield, OH</span></li><li class="ln-n"><a href="#" data-orgid="7784">NG/CDC</a><span class="cityState">, Georgia</span></li><li class="ln-n"><a href="#" data-orgid="6251">NGL</a><span class="cityState">, Georgia</span></li><li class="ln-n"><a href="#" data-orgid="5652">NLDevTest</a><span class="cityState">, Alabama</span></li><li class="ln-n"><a href="#" data-orgid="5677">NLDevTest2</a><span class="cityState">, Alabama</span></li><li class="ln-n"><a href="#" data-orgid="5678">NLDevTest3,,</a><span class="cityState">, Alabama</span></li><li class="ln-n"><a href="#" data-orgid="5688">NLDevTest4</a><span class="cityState">, Alaska</span></li><li class="ln-n"><a href="#" data-orgid="7128">norg name</a><span class="cityState">, Alabama</span></li><li class="ln-o"><a href="#" data-orgid="7118">Org is rockin</a><span class="cityState">, Alaska</span></li><li class="ln-o"><a href="#" data-orgid="7408">Org Name Test</a><span class="cityState">, Louisiana</span></li><li class="ln-p"><a href="#" data-orgid="5448">Patriots Forever</a><span class="cityState">, Pennsylvania</span></li><li class="ln-s"><a href="#" data-orgid="5449">Saturday Morning Cartoon Characters</a><span class="cityState">, New York</span></li><li class="ln-s"><a href="#" data-orgid="7171">smp org2</a><span class="cityState">, Louisiana</span></li><li class="ln-t"><a href="#" data-orgid="404">Take Action and Advocate for the Love of Kids</a><span class="cityState">Enterprise, AL</span></li><li class="ln-t"><a href="#" data-orgid="7170">test</a><span class="cityState">, Arkansas</span></li><li class="ln-t"><a href="#" data-orgid="5447">TestReg715</a><span class="cityState">, Kentucky</span></li><li class="ln-t"><a href="#" data-orgid="5829">The A</a><span class="cityState"></span></li><li class="ln-t"><a href="#" data-orgid="5830">The B</a><span class="cityState">, Hhohho District</span></li><li class="ln-t"><a href="#" data-orgid="5817">The Berlin Org</a><span class="cityState">, Land Berlin</span></li><li class="ln-t"><a href="#" data-orgid="5827">The Test Org</a><span class="cityState">, Land Berlin</span></li><li class="ln-t"><a href="#" data-orgid="5446">Turtles are the Coolest</a><span class="cityState">, Georgia</span></li><li class="ln-no-match" style="display:none">No matching entries</li></ul></div>
+	<div class="modal-footer">
+		<a href="#" data-dismiss="modal" class="btn">Close</a>
+	</div>
+</div>
+-->

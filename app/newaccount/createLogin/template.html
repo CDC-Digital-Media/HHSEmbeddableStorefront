@@ -1,0 +1,69 @@
+﻿<div class="sf_form">
+    <h1>Login Information</h1>
+    <p>
+        Please enter your email address and select a password for your account. Passwords are case sensitive and must:
+		<ul>
+            <li>Be at least 8 characters in length</li>
+            <li>Contain at least one upper case letter</li>
+            <li>Contain at least one lower case letter</li>
+            <li>Contain at least one number</li>
+        </ul>
+    </p>
+    <div class="form-horizontal">
+        <div ng-form="createLogin.form" novalidate>
+            <fieldset>
+                <!-- email input -->
+                <div class="control-group">
+                    <label for="loginEmail" class="control-label">Email Address<span class="warning">*</span></label>
+                    <div class="controls">
+                        <input type="email" id="loginEmail" name="loginEmail" ng-model="createLogin.login.email" placeholder="Email Address" class="input-xlarge" maxlength="256" required />
+                    </div>
+                    <!-- email validation -->
+                    <div ng-show="createLogin.form.showValidationMessages" ng-messages="createLogin.form.loginEmail.$error" class="valMsg">
+                        <span ng-message="required">Please enter your email address</span>
+                        <span ng-message="email">Invalid email format</span>
+                    </div>
+
+                    <div ng-show="createLogin.form.showValidationMessages" ng-messages="createLogin.form.$error" class="valMsg">
+                        <span ng-message="emailExists">This email address already exists in the system.</span>
+                    </div>
+
+                </div>
+
+                <!-- password -->
+                <div class="control-group">
+                    <label for="loginPassword" class="control-label">Password<span class="warning">*</span></label>
+                    <div class="controls">
+                        <input type="password" id="loginPassword" name="loginPassword" ng-model="createLogin.login.password" placeholder="Password" class="input-xlarge" maxlength="80" required ng-pattern="/(?=^.{8,80}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*/" />
+                    </div>
+                    <!-- password validation -->
+                    <div ng-show="createLogin.form.showValidationMessages" ng-messages="createLogin.form.loginPassword.$error" class="valMsg">
+                        <span ng-message="required">Please enter your password</span>
+                        <span ng-message="pattern">Password doesn't meet the security requirements</span>
+                    </div>
+                </div>
+
+                <!-- re-enter password -->
+                <div class="control-group">
+                    <label for="loginPasswordRepeat" class="control-label">Re-enter Password<span class="warning">*</span></label>
+                    <div class="controls">
+                        <input type="password" id="loginPasswordRepeat" name="loginPasswordRepeat" ng-model="createLogin.login.passwordRepeat" placeholder="Re-enter Password" class="input-xlarge" maxlength="15" required />
+                    </div>
+                    <!-- repeat password validation -->
+                    <div ng-show="createLogin.form.showValidationMessages" ng-messages="createLogin.form.loginPasswordRepeat.$error" class="valMsg">
+                        <span ng-message="repeatPassword">Please retype your password again</span>
+                    </div>
+
+                    <div ng-show="createLogin.form.showValidationMessages" ng-messages="createLogin.form.$error" class="valMsg">
+                        <span ng-message="matchPasswords">Your passwords don't match</span>
+                    </div>
+
+                </div>
+
+            </fieldset>
+        </div>
+    </div>
+    <div class="alert alert-error loginValidation hide">
+        <span class="msg">Message</span>
+    </div>
+</div>

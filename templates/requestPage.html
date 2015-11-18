@@ -1,0 +1,60 @@
+﻿<h2>Request a Page to be Syndicated</h2>
+<div class="requestPageForm">
+	<small>
+		<div class="alert alert-error requestPageValidation hide">
+			<span class="msg"></span>
+		</div>
+		<div class="alert alert-success resetSuccess hide">
+			<span class="msg"></span>
+		</div>
+
+		<div class="form-horizontal">
+			<p>Please enter your contact information and the specific Web page URLs you are interested in. Your information will only be used to confirm the request. When you have completed the form, select Submit Request.</p>
+			
+            <form id="emailforms" action="http://.....[devServer]...../dev_emailforms/validate" method="get" role="form">
+				<div class="control-group requestPageContactArea">
+					<label class="control-label" for="requestEmail">Contact Information</label>
+					<div class="controls apiFormControls">
+						<input id="From" name="From" placeholder="Email Address" class="input-xlarge" type="text" maxlength="50">
+						<span class="validationMsg"></span>
+                        <input name="validator" type="hidden" value="recaptcha" />
+                        <input name="LineWrap" type="hidden" value="80" />
+                        <input type="hidden" name="env.HTTP_HOST" />
+					</div>
+				</div>
+					
+				<div class="requestRowsContainer"></div>
+
+				<div class="captchaWrapper">
+                    <div id="captchaDiv" class="form-group recaptcha challenge noLinking noDecoration"></div>
+
+
+<!--                    <fieldset>
+                        <legend>Form Validation</legend>
+					    <div class="form-group recaptcha challenge noLinking noDecoration">
+						    <script>
+							    var RecaptchaOptions = { theme: 'white' };
+						    </script>
+						    <script src="https://www.google.com/recaptcha/api/challenge?k=6Lc1AfESAAAAADxcj4idESEt1wXLxwIwTshxucvc"></script>
+						    <noscript>
+							    <iframe src="https://www.google.com/recaptcha/api/noscript?k=6Lc1AfESAAAAADxcj4idESEt1wXLxwIwTshxucvc" height="300" width="500" title="Challenge field"></iframe>
+							    <div class="form-group">
+								    <label for="recaptcha_challenge_field">Respond to the challenge above to get a value to enter in this box:</label>
+								    <textarea id="recaptcha_challenge_field" name="recaptcha_challenge_field" 
+									    rows="3" cols="40"></textarea>
+								    <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+							    </div>
+						    </noscript>
+					    </div>
+                    </fieldset>-->
+				</div>
+                <br /><br />
+				<div class="control-group">
+					<div class="controls typeG">
+                        <button id="mySubmit" name="btnSubmit" class="button btnSubmitCredentials btn btn-primary" type="submit">Submit Request</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</small>
+</div>

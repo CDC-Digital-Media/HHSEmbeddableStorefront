@@ -1,0 +1,79 @@
+﻿<div class="login sf_form">
+	<h2>Reset your password</h2>
+	<div class="loginForm">
+		<p>Please enter your email address and new password. Passwords are case sensitive and must:
+			<ul>
+				<li>Be at least 8 characters in length</li>
+				<li>Contain at least one upper case letter</li>
+				<li>Contain at least one lower case letter</li>
+				<li>Contain at least one number</li>
+			</ul>
+		</p>
+
+		<div class="form-horizontal">
+			<form name="resetPassword.form" novalidate>
+				<fieldset>
+
+					<!-- email input -->
+					<div class="control-group">
+						<label class="control-label" for="userEmail">Email Address<span class="warning">*</span></label>
+						<div class="controls">
+							<input type="email" id="userEmail" name="userEmail" ng-model="resetPassword.user.email" placeholder="Email Address" class="input-xlarge" maxlength="256" ng-required="true" /> <span class="warning">*</span> required
+						</div>
+						<!-- email validation -->
+						<div ng-if="resetPassword.form.$submitted" ng-messages="resetPassword.form.userEmail.$error" class="valMsg">
+							<span ng-message="required">Tell us your email.</span>
+							<span ng-message="email">This is not a valid email.</span>
+						</div>
+					</div>
+
+					<!-- password input -->
+					<div class="control-group">
+						<label class="control-label" for="userPassword">Password<span class="warning">*</span></label>
+						<div class="controls">
+							<input type="password" id="userPassword" name="userPassword" ng-model="resetPassword.user.password" placeholder="Password" class="input-xlarge" maxlength="80" ng-required="true" ng-pattern="/(?=^.{8,80}$)((?=.*\d)(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[^A-Za-z0-9])(?=.*[a-z])|(?=.*[^A-Za-z0-9])(?=.*[A-Z])(?=.*[a-z])|(?=.*\d)(?=.*[A-Z])(?=.*[^A-Za-z0-9]))^.*/" />
+						</div>
+						<!-- password validation -->
+						<div ng-if="resetPassword.form.$submitted" ng-messages="resetPassword.form.userPassword.$error" class="valMsg">
+							<span ng-message="required">Tell us your password.</span>
+							<span ng-message="pattern">Password doesn't meet the security requirements</span>
+						</div>
+					</div>
+
+					<!-- reenter password input -->
+					<div class="control-group">
+						<label class="control-label" for="userPasswordReenter">Re-enter Password<span class="warning">*</span></label>
+						<div class="controls">
+							<input type="password" id="userPasswordReenter" name="userPasswordReenter" ng-model="resetPassword.user.passwordReenter" placeholder="Re-enter Password" class="input-xlarge" maxlength="80" ng-required="true" />
+						</div>
+						<!-- reenter password validation -->
+						<div ng-if="resetPassword.form.$submitted" ng-messages="resetPassword.form.userPasswordReenter.$error" class="valMsg">
+							<span ng-message="required">Tell us your password again.</span>
+						</div>
+
+						<!-- login pending message -->
+						<!-- todo: need a spinner here as well -->
+						<span ng-show="resetPassword.pending">Updating password...</span>
+
+						<!-- error message -->
+						<div ng-if="resetPassword.form.$submitted" ng-messages="resetPassword.form.$error" class="valMsg">
+							<span ng-message="nonMatchingPassword">Passwords do not match.</span>
+						</div>
+					</div>
+
+					<div ng-if="resetPassword.form.$submitted" ng-messages="resetPassword.form.$error" class="valMsg_global">
+						<span ng-message="serverError"><span class="icon-warning-sign icon warning"></span> {{resetPassword.errorMessage}}</span>
+					</div>
+
+					<!-- submit button -->
+					<div class="control-group">
+						<div class="controls typeG">
+							<input class="btn btn-primary btnSubmitCredentials" type="submit" ng-click="resetPassword.submit()" value="Submit" />
+						</div>
+					</div>
+
+				</fieldset>
+			</form>
+		</div>
+	</div>
+</div>

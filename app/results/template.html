@@ -1,0 +1,122 @@
+﻿<div ng-if="results.isHomePage" class="homeContentWrap row clearfix borderbox featuredContent" ng-hide>
+    <div class="span14 homeLeftCol">
+        <div class="homeText clearfix">
+            <img src="images/home_art.png" alt="" class="pull-right" />
+            <h2>Free credible health content for your websites, apps, &amp; social media</h2>
+        </div>
+
+        <div class="searchLocContent ng-hide" ng-show="results.isHomePage">
+            <div ng-controller="SearchController as search" ng-include="search.template"></div>
+        </div>
+
+        <div ng-if="results.isHomePage" ng-controller="CarouselSliderController as carouselSlider" ng-include="carouselSlider.template" class="thumbnail-slider"></div>
+    </div>
+    <div class="span5 homeRightCol">
+        <div ng-if="results.isHomePage" ng-controller="TopSyndicatedController as topSyndicated" ng-include="topSyndicated.template" ng-hide></div>
+    </div>
+</div>
+
+<div class="sf_form ng-hide" ng-show="results.requestingPage">
+    <div class="valMsg_global">
+        <span><span class="icon-ok-sign icon success"></span>The following content matches your request. Choose the items you'd like to add to your syndication list for: {{results.$rootScope.syndList.listName}}.</span>
+    </div>
+</div>
+<div class="resultSet clearfix">
+    <div class="row" style="display: block;">
+        <div class="span18">
+            <div class="sortOptions pull-right" ng-show="results.isSingleType">
+                <div class="btn-group">
+                    <a class="btn btn-link dropdown-toggle" data-toggle="dropdown">{{results.sortText}}<span class="caret"></span></a>
+                    <ul class="dropdown-menu sortPicker text-left">
+                        <li><a style="color: rgb(0, 0, 0); text-decoration: none;" href="#" ng-click="results.sort('desc')">Newest First</a></li>
+                        <li><a style="color: rgb(0, 0, 0); text-decoration: none;" href="#" ng-click="results.sort('asc')">Oldest First</a></li>
+                    </ul>
+                    <label ng-if="results.showGrouping" class="checkbox inline" style="padding-left: 0px; margin-top: -4px; margin-left: 10px;" for="cbxGroupByType">
+                        Group by Media Type												
+                        <input id="cbxGroupByType" style="margin-left: 10px; float: right;" type="checkbox" ng-model="results.checkGrouped" ng-change="results.group()">
+                    </label>
+                </div>
+            </div>
+            <span class="ng-hide" ng-show="!results.requestingPage && !results.isHomePage">
+                <i class="icon-angle-left" /><a class="returnToResults" href="#" ng-click="results.goBack()">Return to Previous Page</a>
+            </span>
+        </div>
+    </div>
+
+    <div class="row" ng-show="results.isSingleType">
+        <div class="pagination pull-right">
+            <ul ng-if="results.meta.pagination.totalPages > 1">
+                <li ng-class="{'disabled' : results.meta.pagination.pageNum == 1}" ng-click="results.prev()"><a href="#">Prev</a></li>
+                <li ng-if="results.showStartEllipse" ng-class="{'active' : results.currentPage == page.pageNumber}" ng-click="results.page(1)"><a href="#">1</a></li>
+                <li ng-if="results.showStartEllipse" class="elipsis" ng-click="results.prevEllipse()"><a href="#">...</a></li>
+                <li ng-repeat="page in results.pages" ng-click="results.page(page.pageNumber)" ng-class="{'active' : results.currentPage == page.pageNumber}"><a href="#">{{page.pageNumber}}</a></li>
+                <li ng-if="results.showEndEllipse" class="elipsis" ng-click="results.nextEllipse()"><a href="#">...</a></li>
+                <li ng-if="results.showEndEllipse" ng-class="{'active' : results.currentPage == page.pageNumber}" ng-click="results.page(results.meta.pagination.totalPages)"><a href="#">{{results.meta.pagination.totalPages}}</a></li>
+                <li ng-class="{'disabled': results.meta.pagination.pageNum == results.meta.pagination.totalPages}" ng-click="results.next()"><a href="#">Next</a></li>
+            </ul>
+        </div>
+        <div class="headerText pull-left">
+            <h1 ng-cloak>
+                {{results.headerText_mediaType}}             
+                <small class="topicCount">({{results.meta.pagination.total}})</small>
+                <span class="pdfHelp" style="position:relative;">
+					<a tabindex="0" class="icon-question-sign" ng-click="showHelp = true"></a>
+					<div class="popover right in" ng-show="showHelp" role="tooltip" id="Div1" style="top: -30px; left: 15px; display: block; width:230px;"><div class="arrow"></div><h3 class="popover-title">Quick Reference Sheet &nbsp; <a class="pull-right close" ng-click="showHelp = false">×</a></h3><div class="popover-content"><a ng-href="./docs/Syndicate{{results.currentMediaType}}.pdf" target="_blank" class="nonHtml plugin" tabindex="0"><span class="tp-label">{{results.currentMediaType}} Syndication</span></a></div></div>
+                </span>
+            </h1>
+            <div class="searchText" ng-if="results.showSearchText" ng-bind-html="results.searchText"></div>
+
+        </div>
+    </div>
+	<div ng-show="results.showSpinner" class="progressIndicator"></div>
+
+    <div class="row" style="margin-left: 10px;" ng-show="results.isSingleType">
+        <em ng-show="results.meta.pagination.count === 0" class="ng-hide">No results were found for your search criteria.</em>
+        
+        <div ng-repeat="item in results.data" class="module-typeF span4 cs-tile" ng-class="{'cs-tile-selected' : results.selectedMediaIds.indexOf(item.id) >- 1}">
+            <div ng-include="results.tileTemplate"></div>                        
+        </div>
+
+		<div style="clear:both;">
+			<div class="pagination pull-right">
+				<ul ng-if="results.meta.pagination.totalPages > 1">
+					<li ng-class="{'disabled' : results.meta.pagination.pageNum == 1}" ng-click="results.prev()"><a href="#">Prev</a></li>
+					<li ng-if="results.showStartEllipse" ng-class="{'active' : results.currentPage == page.pageNumber}" ng-click="results.page(1)"><a href="#">1</a></li>
+					<li ng-if="results.showStartEllipse" class="elipsis"><a href="#">...</a></li>
+					<li ng-repeat="page in results.pages" ng-click="results.page(page.pageNumber)" ng-class="{'active' : results.currentPage == page.pageNumber}"><a href="#">{{page.pageNumber}}</a></li>
+					<li ng-if="results.showEndEllipse" class="elipsis"><a href="#">...</a></li>
+					<li ng-if="results.showEndEllipse" ng-class="{'active' : results.currentPage == page.pageNumber}" ng-click="results.page(results.meta.pagination.totalPages)"><a href="#">{{results.meta.pagination.totalPages}}</a></li>
+					<li ng-class="{'disabled': results.meta.pagination.pageNum == results.meta.pagination.totalPages}" ng-click="results.next()"><a href="#">Next</a></li>
+				</ul>
+			</div>
+		</div>
+    </div>
+	
+
+    <div class="row" ng-show="!results.isSingleType">
+
+        
+        <div ng-repeat="mtResult in results.selectedMediaTypes">
+            <div class="row">
+                <div class="pull-right">
+                    <a href="#" ng-if="mtResult.meta.pagination.total > 4" ng-click="results.getMediaByType(mtResult.name)">View More {{mtResult.headerText}}</a>
+                </div>
+                <div class="headerText pull-left" style="padding-left:15px; padding-top:3px;">
+                    <h1 ng-cloak>{{mtResult.headerText}}             
+						<small class="topicCount">({{mtResult.meta.pagination.total}})</small>
+                        <span class="pdfHelp" style="position:relative;">
+							<a tabindex="0" class="icon-question-sign" ng-click="showHelp = true"></a>
+							<div class="popover right in" ng-show="showHelp" role="tooltip" id="" style="top: -30px; left: 15px; display: block; width:230px;"><div class="arrow"></div><h3 class="popover-title">Quick Reference Sheet &nbsp; <a class="pull-right close" ng-click="showHelp = false">×</a></h3><div class="popover-content"><a ng-href="./docs/Syndicate{{mtResult.name}}.pdf" target="_blank" class="nonHtml plugin" tabindex="0"><span class="tp-label">{{mtResult.name}} Syndication</span></a></div></div>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 20px; margin-left:25px; margin-top:7px;">                                
+                <em ng-show="mtResult.data.length===0" class="ng-hide">No results were found for your search criteria.</em>                
+                <div ng-repeat="item in mtResult.data" class="module-typeF span4 cs-tile" ng-class="{'cs-tile-selected' : results.selectedMediaIds.indexOf(item.id) >- 1}">
+                    <div ng-include="results.tileTemplate"></div>  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

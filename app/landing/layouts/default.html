@@ -1,0 +1,114 @@
+﻿<div class="row">
+    <div class="span14">
+        <div class="row">
+			<div class="headerText pull-left" style="margin-left:15px;" ng-show="landing.meta.pagination.total">
+				<h1><small class="topicCount">Showing {{landing.meta.pagination.total}} item(s)</small></h1>
+			</div>
+                
+            <div class="pagination pull-right">
+                <ul ng-if="landing.meta.pagination.totalPages > 1">
+                    <li ng-class="{'disabled' : landing.meta.pagination.pageNum == 1}" ng-click="landing.prev()"><a href="#">Prev</a></li>
+                    <li ng-if="landing.showStartEllipse" ng-class="{'active' : landing.currentPage == page.pageNumber}" ng-click="landing.page(1)"><a href="#">1</a></li>
+                    <li ng-if="landing.showStartEllipse" class="elipsis" ng-click="landing.prevEllipse()"><a href="#">...</a></li>
+                    <li ng-repeat="page in landing.pages" ng-click="landing.page(page.pageNumber)" ng-class="{'active' : landing.currentPage == page.pageNumber}"><a href="#">{{page.pageNumber}}</a></li>
+                    <li ng-if="landing.showEndEllipse" class="elipsis" ng-click="landing.nextEllipse()"><a href="#">...</a></li>
+                    <li ng-if="landing.showEndEllipse" ng-class="{'active' : landing.currentPage == page.pageNumber}" ng-click="landing.page(landing.meta.pagination.totalPages)"><a href="#">{{landing.meta.pagination.totalPages}}</a></li>
+                    <li ng-class="{'disabled': landing.meta.pagination.pageNum == landing.meta.pagination.totalPages}" ng-click="landing.next()"><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div ng-show="landing.showSpinner" class="progressIndicator"></div>
+		<em ng-show="landing.meta.pagination.count === 0" class="ng-hide">No results were found for your search criteria.</em>
+
+        <div class="landingBlock clearfix" ng-repeat="item in landing.landingData">
+            <a href="#" ng-click="landing.routeDetailPage(item)" class="pull-left landingThumb"><img src="{{item.thumbnailUrl}}" alt="{{item.name}}" /></a>
+            <a href="#" ng-click="landing.routeDetailPage(item)" class="span10 landingTitle">{{item.name}}</a>
+            <p class="span10">{{item.description}}</p>
+
+        </div><!--feedBlock-->
+
+		<div class="pagination pull-right">
+			<ul ng-if="landing.meta.pagination.totalPages > 1">
+				<li ng-class="{'disabled' : landing.meta.pagination.pageNum == 1}" ng-click="landing.prev()"><a href="#">Prev</a></li>
+				<li ng-if="landing.showStartEllipse" ng-class="{'active' : landing.currentPage == page.pageNumber}" ng-click="landing.page(1)"><a href="#">1</a></li>
+				<li ng-if="landing.showStartEllipse" class="elipsis" ng-click="landing.prevEllipse()"><a href="#">...</a></li>
+				<li ng-repeat="page in landing.pages" ng-click="landing.page(page.pageNumber)" ng-class="{'active' : landing.currentPage == page.pageNumber}"><a href="#">{{page.pageNumber}}</a></li>
+				<li ng-if="landing.showEndEllipse" class="elipsis" ng-click="landing.nextEllipse()"><a href="#">...</a></li>
+				<li ng-if="landing.showEndEllipse" ng-class="{'active' : landing.currentPage == page.pageNumber}" ng-click="landing.page(landing.meta.pagination.totalPages)"><a href="#">{{landing.meta.pagination.totalPages}}</a></li>
+				<li ng-class="{'disabled': landing.meta.pagination.pageNum == landing.meta.pagination.totalPages}" ng-click="landing.next()"><a href="#">Next</a></li>
+			</ul>
+		</div>
+
+    </div><!--span14-->
+
+    <div class="span5 landingSidebar">
+		<!-- sidebar include -->
+		<div ng-include src="landing.getSidebarPartial()"></div>
+
+    </div><!--span5-->
+</div><!--row-->
+
+
+
+<div id="howIUse" class="modal hide modal-howUse in" aria-hidden="false">
+        <div class="modal-header">
+            <a class="close icon-remove" data-dismiss="modal" style="text-decoration: none;"></a>
+            <h3>RSS Help<h3>
+        </div>
+        <div class="modal-body">
+
+            <div id="contentArea">
+                <!-- begin editable -->
+
+                <div class="help">
+                    <h3>What Is RSS?</h3>
+                    <p>RSS stands for Really Simple Syndication.  It's an easy way for you to keep up with news and information that's  important to you, and helps you avoid the conventional methods of  browsing or searching for information on websites. Now the content you  want can be delivered directly to you without cluttering your inbox  with e-mail messages. This content is called a "feed."</p>
+                    <p>RSS is written in the Internet coding language known as XML (eXtensible Markup Language), which is why you  see RSS buttons commonly labeled with this icon:<strong> </strong>
+                        <img width="36" height="14" alt="XML language icon" src="http://www2c......[domain]...../podcasts/images/xml.gif" border="0"></p>
+                    <h3>What Is an RSS Reader?</h3>
+                    <p>An RSS reader is a small software program that collects and displays RSS  feeds. It allows you to scan headlines from a number of news sources in  a central location.</p>
+                    <h3>Where Can I Get an RSS Reader?</h3>
+                    <p>There are many RSS news readers (also called <em>aggregators</em>) available for download from the Internet.  CDC does not endorse any particular reader. Some browsers such as the   current versions of Firefox and Safari as well as some portals like <em>Yahoo</em> offer RSS services for their subscribers.&nbsp;  Here is a listing of some <a title="Link to External Web Site" id="anch_65" href="http://dmoz.org/Reference/Libraries/Library_and_Information_Science/Technical_Services/Cataloguing/Metadata/RDF/Applications/RSS/News_Readers/" target="_blank">feed readers and news aggregators</a><a class="external" id="anch_66" href="http://www......[domain]...../Other/disclaimer.html"></a>.* &nbsp;Some are free to download and others are available for purchase.</p>
+                    <h3>How Do I Use RSS Feeds?</h3>
+                    <p>The first step is to choose an RSS reader.  Each reader has a slightly different way of adding a new feed, also  called a "channel." Follow the directions for your reader but, in most  cases, here's how it works:</p>
+                    <ul>
+                        <li>Click on the link or more likely, the small XML button near the feed you want. Once you do so, you will see a page displaying XML code.<br>
+                            Example: <a id="anch_67" href="http://www......[domain]...../media/rss.xml">Office of Communication Media Relations</a> &nbsp;<a id="anch_68" href="http://www......[domain]...../media/rss.xml"><img width="36" height="14" alt="XML language icon" src="http://www2c......[domain]...../podcasts/images/xml.gif" border="0"></a></li>
+                        <li>From your web browser's address bar, copy the URL (web address). For example, the URL you would copy for the Media Relations news is: <a id="anch_69" href="http://www......[domain]...../media/rss.xml">http://www......[domain]...../media/rss.xml</a>. &nbsp;</li>
+                        <li>Paste that URL into the "<em>Add New Channel"</em> or �<em>Add New Feed�</em> section of the reader. The RSS feed will start to display and regularly update the headlines for you.</li>
+                    </ul>
+                    <h3>What other RSS feeds are available in government?</h3>
+                    <ul type="disc">
+                        <li><a title="Link to External Web Site" id="anch_70" href="http://www.firstgov.gov/Topics/Reference_Shelf/Libraries/RSS_Library.shtml" target="_blank">Other Government RSS Feeds</a><a class="external" id="anch_71" href="http://www......[domain]...../Other/disclaimer.html"></a></li>
+                        <li><a title="Link to External Web Site" id="anch_72" href="http://www.firstgov.gov/Topics/Reference_Shelf/Libraries/Podcasts.shtml" target="_blank">Other Government Podcasts</a><a class="external" id="anch_73" href="http://www......[domain]...../Other/disclaimer.html"></a></li>
+                    </ul>
+                    <br>
+                    <p>
+                        <img title="External Web Site Icon" class="externalImg" alt="External Web Site Icon" src="/TemplatePackage/images/icon_out.png">This link leaves the CDC domain. CDC is not   responsible for the content of any "off-site" web pages. <a id="anch_74" href="http://www......[domain]...../Other/disclaimer.html">More infomation</a> </p>
+                    <br>
+                </div>
+
+                <div id="content-secondary">
+                    <!-- begin editable -->
+                    <!--  // This area is optional
+									// All content in the Right Column (except for Page Option links and GovD) will be moved to the Persistent Content Area upon migration
+									-->
+                    <!-- /end editable -->
+                </div>
+                <!-- /end #content-secondary -->
+            </div>
+            <!-- /end #contentArea -->
+
+        </div>
+        <div class="modal-footer">
+            <a href="#" data-dismiss="modal" class="btn btn-primary">Close</a>
+        </div>
+    </div>
+
+    <div id="whatEesRSS" class="modal hide modal-whatsRss in" aria-hidden="false">
+        Stuff
+    </div>
+    <div id="whatEesJSON" class="modal hide modal-whatsJson in" aria-hidden="false">
+        Stuff
+    </div>

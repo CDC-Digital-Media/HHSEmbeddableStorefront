@@ -1,0 +1,10 @@
+
+var VERSION = {
+	MAJOR: 3,
+	MINOR: 0,
+	REVISION: 18,
+	BUILD: 0,
+	DATE: '9/23/2015 12:26:00 PM'
+};
+
+module.exports.VERSION = VERSION;

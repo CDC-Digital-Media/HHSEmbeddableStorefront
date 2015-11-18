@@ -1,0 +1,80 @@
+﻿<nav id="left" class="hidden-one hidden-two facetedNav">
+    <h3>
+        <a href="#" class="homeLink" ng-click="navFacet.homeclick($event)">Media Library Home</a>
+    </h3>
+
+	<div class="categoryFilter filterArea">
+		<div><img src="images/nav_narrowresults.png" alt="Narrow your results" /></div>
+		<div class="clearAll clearAllFilters text-right pull-right"><a href="#" ng-click="navFacet.clearClick($event);">clear filters</a></div>
+
+		<div class="filtersCurrent" ng-show="navFacet.topics.length > 0 || navFacet.keyword">
+			<div class="clearfix" ng-show="navFacet.topics.length > 0">
+				<div class="filterBy">Topic: </div>
+				<div ng-repeat="item in navFacet.topics"  class="clearAll text-right pull-right searchTopic">{{item.name}} <i class="icon-remove" style="cursor:pointer;" ng-click="navFacet.clearTopicClick(item.id, $event);"></i></div>
+                <div class="clearAll">
+				    <a href="#/topics">choose a topic</a>
+			    </div>
+			</div>
+			<div class="clearfix" ng-show="navFacet.keyword">
+				<div class="filterBy">Keyword: </div>
+				<div class="clearAll span4 text-right pull-right searchKeyword url" ng-show="navFacet.keyword">"{{ navFacet.keyword }}" <i class="icon-remove" style="cursor:pointer;" ng-click="navFacet.clearKeywordClick($event);"></i></div>
+			</div>
+		</div>
+
+		<div class="filterLabel" ng-show="navFacet.topics.length === 0">
+			Topic
+			<div class="clearAll">
+				<a href="#/topics">choose a topic</a>
+			</div>
+		</div>
+
+		<ul>
+			<li>
+				<div class="filterLabel">Keyword</div>
+				<div>
+					<div id="searchTarget" class="searchInputWrap">
+						<form class="form-search" ng-submit="navFacet.search()">
+							<div class="input-append">
+								<input type="text" name="searchValue" ng-model="navFacet.searchValue" placeholder="Search" />
+								<button type="submit" ng-click="navFacet.search()" class="submit searchBtn btn icon-search"></button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</li>
+
+			<li>
+				<div class="filterLabel">Type</div>
+				<ul style="display: block;" class="mediaList">
+					<li ng-repeat="item in navFacet.mediaTypes">
+						<a href="#" ng-click="navFacet.mediaTypeClick(item.name, item.description, $event);" ng-class="{'active': navFacet.selectedTypes.indexOf(item.name) > -1}"">{{item.description}}</a>
+						<a href="#" ng-click="navFacet.mediaTypeClick(item.name, item.description, $event);" ng-show="navFacet.selectedTypes.indexOf(item.name) > -1" class="removeFilter icon-remove"></a>
+					</li>
+				</ul>
+
+			</li>
+		<li>
+			<a href="#/learnmore">About this Site</a>
+		</li>
+		<li>
+			<a href="#/learnmore#gethelp">Get Help</a>
+		</li>
+		<li>
+			<a href="#/additionalresources">Resources for Developers</a>
+		</li>
+		<li>
+			<a href="#/requestsyndication">Request a Page for Syndication</a>
+		</li>
+		<li>
+			<a href="#/reportproblem">Report a Problem</a>
+		</li>
+		</ul>
+
+	</div><!--categoryFilter-->
+
+    
+
+</nav>
+
+
+

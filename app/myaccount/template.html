@@ -1,0 +1,49 @@
+﻿<h2>My Account</h2>
+<div class="myAccount">
+	<div class="row">
+		<div class="span9">
+			<div class="module-typeF">
+				<h3>User Information</h3>
+				<div class="listContainer">
+					<div class="row">
+						<div class="span3 text-right userLabel">First Name</div>
+						<div class="span5" ng-bind="myaccount.user.firstName"></div>
+					</div>
+					<div class="row" ng-show="myaccount.user.middleName">
+						<div class="span3 text-right userLabel">Middle Name</div>
+						<div class="span5" ng-bind="myaccount.user.middleName"></div>
+					</div>
+					<div class="row">
+						<div class="span3 text-right userLabel">Last Name</div>
+						<div class="span5" ng-bind="myaccount.user.lastName"></div>
+					</div>
+					<div class="row">
+						<div class="span3 text-right userLabel">Email</div>
+						<div class="span5" ng-bind="myaccount.user.email"></div>
+					</div>
+				</div><!--listContainer-->
+			</div><!--module-typeF-->
+
+		</div><!--span9-->
+		<div class="span9">
+			<div class="module-typeF">
+				<div class="listContainer">
+					<h3>Organization</h3>
+					<ul class="list-block">
+						<li ng-repeat="item in myaccount.user.organizations">
+							<strong>{{item.name}}</strong><br />
+							{{item.address}}<br />
+							{{item.stateProvince}}<span ng-show="{{item.postalCode | noBadData}}">, {{item.postalCode}}</span>
+							<ul>
+								<li ng-repeat="website in item.website"><a href="{{website.url}}" target="_blank">{{website.url}}</li>
+							</ul>
+						</li>
+					</ul>
+				</div><!--listContainer-->
+			</div><!--module-typeF-->
+		
+		</div><!--span9-->
+
+	</div><!--row-->
+</div>
+

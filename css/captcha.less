@@ -1,0 +1,81 @@
+/* min-height rule for topic blocks container */
+
+.captchaWrapper {
+	padding:15px 0 15px 179px;
+
+	/*
+	.top-blocks dl{
+		min-height: 50px;
+	}
+	*/
+
+	span.wm-label {
+		line-height: 20px!important;
+		top: -5px!important;
+	}
+
+	#recaptcha_table span {
+		line-height: 1px!important;
+	}
+
+	#recaptcha_table .recaptcha_input_area span.wm-label {
+		z-index: 999;
+		top: -2px!important;
+		line-height: 16px!important;
+		font-size: 14px;
+	}
+
+	input:invalid {
+		color: red;
+	}
+	span.validation-error {
+		display: none;
+	}
+	input:invalid ~ span.validation-error {
+		display: block;
+		color: red;
+	}
+
+	form.validate label.error {
+		font-weight: bold;
+		text-align: left;
+		display: inline-block;
+		color: red;
+		margin-left: 12px;
+	}
+	.form-group input {
+		padding: 0;
+		box-sizing: content-box;
+	}
+
+	.form-group fieldset.fieldset.border {
+		padding: 10px;
+		border: 1px solid #666;
+		border-radius: 8px;
+		box-shadow: 0 0 1px #666;
+		margin: 12px 0px 18px 0px;
+	}
+
+	.form-group fieldset.fieldset.border legend {
+		float: left;
+		margin-top: -24px;
+		margin-left: 10px;
+		margin-bottom: 0px;
+		width: inherit; /* Or auto */
+		padding: 0 10px; /* To give a bit of padding on the left and right */
+		border-bottom: none;
+		background-color: white;
+		font-size: inherit;
+		line-height: inherit;
+	}
+
+	.form-group fieldset.fieldset.border legend + * {
+		clear: both;
+	}
+
+
+	#invalidCaptcha {
+		font-size: 24px;
+		color: white;
+	}
+}

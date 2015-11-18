@@ -1,0 +1,186 @@
+﻿<div class="sf_form">
+	<h1>Organization</h1>
+	<div class="organization">
+		
+
+
+		<div class="newOrg" style="display:block;">
+			<p class="explanation">Creating a new syndicating organization grants you access to a workspace where you can track the content that you want to syndicate to your website. This space can be shared with other members of your team to create a collaboration point where content can be selected, previewed and vetted prior to syndication.</p>
+			<div class="registrationForm">
+
+				<div class="alert alert-error newOrganizationValidation hide">
+					<span class="msg">Message</span>
+				</div>
+
+				<div class="form-horizontal">
+					<div ng-form="createOrganization.form">
+						<fieldset>
+							<!-- organization name -->
+							<div class="control-group">
+								<label for="organizationName" class="control-label">Organization Name<span class="warning">*</span></label>
+								<div class="controls">
+									<input type="text" id="organizationName" name="organizationName" ng-model="createOrganization.organization.name" placeholder="Organization Name" class="input-xlarge" maxlength="200" 
+                                        ng-required="true" 
+                                        />
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationName.$error" class="valMsg">
+									<span ng-message="required">Please tell us your organization name</span>
+								</div>
+
+                                <div ng-show="newAccount.orgAlreadyExists" class="valMsg">
+                                    <span ng-show="newAccount.orgAlreadyExists">An organization with this name already exists at this location</span>
+                                </div>
+
+							</div>
+
+							<!-- organization type -->
+							<div class="control-group">
+								<label for="organizationType" class="control-label">Organization Type<span class="warning">*</span></label>
+								<div class="controls">
+									<select id="organizationType" name="organizationType" ng-model="createOrganization.organization.type" ng-options="item.displayOrdinal as item.type for item in createOrganization.organizationTypeData" class="input-xlarge" ng-required="true">
+									</select>
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationType.$error" class="valMsg">
+									<span ng-message="required">Tell us your organization type.</span>
+								</div>
+							</div>
+
+							<!-- organization describe (other) -->
+							<div class="control-group" ng-show="createOrganization.ORGANIZATION_TYPE_OTHER === createOrganization.organization.type">
+								<label for="organizationTypeDescribe" class="control-label">Please Describe:<span class="warning">*</span></label>
+								<div class="controls">
+									<input type="text" id="organizationTypeDescribe" name="organizationTypeDescribe" ng-model="createOrganization.organization.typeDescribe" placeholder="Describe your Organization" class="input-xlarge" maxlength="200" ng-required="createOrganization.ORGANIZATION_TYPE_OTHER === createOrganization.organization.type" />
+								</div>
+								<!-- validation (describe is only required if org type is 'other') -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationTypeDescribe.$error" class="valMsg">
+									<span ng-message="required">Describe your organization.</span>
+								</div>
+							</div>
+
+							<!-- continent -->
+							<div class="control-group">
+								<label for="organizationContinent" class="control-label">Continent<span class="warning">*</span></label>
+								<div class="controls">
+									<select id="organizationContinent" name="organizationContinent" ng-model="createOrganization.organization.continent" ng-options="item.geoNameId as item.name for item in createOrganization.continentData" class="input-xlarge location active" ng-required="true">
+									</select>
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationContinent.$error" class="valMsg">
+									<span ng-message="required">Tell us your continent.</span>
+								</div>
+							</div>
+
+							<!-- country -->
+							<div class="control-group">
+								<label for="organizationCountry" class="control-label">Country<span class="warning">*</span></label>
+								<div class="controls">
+									<select id="organizationCountry" name="organizationCountry" ng-model="createOrganization.organization.country" ng-options="item.geoNameId as item.name for item in createOrganization.countryData" class="input-xlarge location active" ng-required="true">
+									</select>
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationCountry.$error" class="valMsg">
+									<span ng-message="required">Tell us your country.</span>
+								</div>
+							</div>
+
+							<!-- state/province -->
+							<div ng-show="createOrganization.stateProvinceData.length" class="control-group">
+								<label for="organizationStateProvince" class="control-label">State/Province<span class="warning">*</span></label>
+								<div class="controls">
+									<select id="organizationStateProvince" name="organizationStateProvince" ng-model="createOrganization.organization.stateProvince" ng-options="item.geoNameId as item.name for item in createOrganization.stateProvinceData" class="input-xlarge location active" ng-required="createOrganization.stateProvinceData.length">
+									</select>
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationStateProvince.$error" class="valMsg">
+									<span ng-message="required">Tell us your State or Province.</span>
+								</div>
+							</div>
+
+							<!-- county/region -->
+							<div ng-show="createOrganization.countyRegionData.length" class="control-group">
+								<label for="organizationCountyRegion" class="control-label">County/Region<span class="warning">*</span></label>
+								<div class="controls">
+									<!--<select id="region" class="input-xlarge location" disabled="">-->
+									<select id="organizationCountyRegion" name="organizationCountyRegion" ng-model="createOrganization.organization.countyRegion" ng-options="item.geoNameId as item.name for item in createOrganization.countyRegionData" class="input-xlarge location" ng-required="createOrganization.countyRegionData.length">
+									</select>
+								</div>
+								<!-- validation -->
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationCountyRegion.$error" class="valMsg">
+									<span ng-message="required">Tell us your County or Region.</span>
+								</div>
+							</div>
+
+							<!-- city 
+							<div class="control-group">
+								<label for="organizationCity" class="control-label">City<span class="warning">*</span></label>
+								<div class="controls">
+									<input type="text" id="organizationCity" name="organizationCity" ng-model="createOrganization.organization.city" placeholder="City" class="input-xlarge" maxlength="100" ng-required="true" />
+								</div>
+								<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationCity.$error" class="valMsg">
+									<span ng-message="required">Please tell us your city.</span>
+								</div>
+							</div>
+                                -->
+
+							<!-- web site domain input -->
+							<div class="control-group domainRow" ng-repeat="item in createOrganization.organization.website track by $index">
+								<label for="organizationWebSiteDomain" class="control-label">
+                                    <div ng-show="$index == 0">
+									    Web Site Domain
+									    <!-- <a href="#" class="domainHelp" ng-click="createOrganization.domainhelp = !createOrganization.domainhelp"><i class="icon-question-sign"></i></a> -->
+									    <span class="warning">*</span>
+                                    </div>
+								</label>
+								<div class="controls">
+									<input type="url" id="organizationWebSiteDomain" name="organizationWebSiteDomain_{{$index}}" ng-model="createOrganization.organization.website[$index].url" placeholder="Web Site Domain" class="input-xlarge txtDomain" maxlength="450" ng-required="true" />
+									<input type="button" ng-click="createOrganization.removeWebSiteDomain($index)" class="close icon-delete" aria-hidden="true" value="&#xf00d;" />
+
+									<!-- validation -->
+									<div ng-show="createOrganization.form.showValidationMessages" ng-messages="createOrganization.form.organizationWebSiteDomain_{{$index}}.$error" class="valMsg">
+										<span ng-message="required">Tell us your Web Site Domain.</span>
+										<span ng-message="url">Invalid URL format</span>
+									</div>
+								</div>
+							</div>
+
+							<!-- add another domain -->
+							<div ng-show="createOrganization.organization.website.length < createOrganization.MAX_ITEMS" class="control-group domainRowAdd">
+								<label class="control-label"></label>
+								<div class="controls">
+									<div><a href="#" ng-click="createOrganization.addWebSiteDomain()" class="addDomain">Add another Domain</a></div>
+								</div>
+							</div>
+
+							<!-- choose from existing organization -->
+							<div class="control-group">
+								<div class="controls">
+									<input type="button" ng-click="newAccount.step = 3" class="btn btn-default btn-small btnCancelNewOrg" value="Choose from Existing Organizations" />
+								</div>
+							</div>
+							
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="domainHelpContent" title="Web Site Domain" ng-show="createOrganization.domainhelp">
+			<div class="popover-inner">
+				<h3 class="popover-title">Why do you need my Web Site Domain?</h3>
+				<div class="popover-content">
+
+					<p>Collecting your domain name allows us to count the number of visitors to CDC hosted media who are directed to us via the media that you have syndicated. (Please note that if you use one of our mapping features users are kept on your site to see that media if you also have it syndicated.) It also provides an ease of use factor for our users that manage syndication on multiple domains.</p>
+					<p><b>Acceptable formats:</b></p>
+					<ul>
+						<li>www.yourDomain.com or www.yourDomain.com/yourFolder</li>
+						<li>http://www.yourDomain.com or http://www.yourDomain.com/yourFolder</li>
+						<li>https://www.yourDomain.com or https://www.yourDomain.com/yourFolder</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>

@@ -1,0 +1,19 @@
+﻿<div class="searchWidget searchLocHome">
+	<div id="searchArea" class="localSearch">
+		<div class="searchWrap row">
+
+			<form id="searchFormLocal" name="search.form" novalidate>
+				<div class="input-append">
+					<div id="searchTarget" class="row searchInputWrap">
+						<label class="search-box" for="searchBoxLocal">
+							<input type="text" id="searchBoxLocal" name="searchValue" ng-model="search.searchValue" placeholder="Search" ng-required="true" />
+							<span class="hidden">Search The CDC</span>
+						</label>
+						<input type="submit" ng-click="search.go()" class="submit searchBtn btn" value="Go" />
+					</div>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</div>

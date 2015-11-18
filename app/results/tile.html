@@ -1,0 +1,33 @@
+﻿<figure class="pull-left">
+    <a href="#" ng-if="!item.altThumbnailUrl" ng-click="results.tileClick(item)">
+        <img class="stroke center cs-tile-thumb" alt="{{item.name}}" ng-src="{{item.thumbnailUrl}}" data-media-id="{{item.id}}"></a>
+    <a href="#" ng-if="item.altThumbnailUrl" ng-click="results.tileClick(item)">
+        <img class="stroke center cs-tile-thumb" alt="{{item.altName}}" ng-src="{{item.altThumbnailUrl}}" data-media-id="{{item.id}}"></a>
+</figure>
+<div class="linkDiv" href="#" ng-click="results.tileClick(item)">
+    <div title="{{item.name}}" style="margin: 0px; padding: 0px; border: 0px currentColor;"><a title="{{item.name}}" href="#" data-media-id="{{item.id}}" ng-bind-html="item.name"></a></div>
+</div>
+<div class="title"></div>
+
+<a title="Please login or create a new user account to add this item to your syndication list" class="pull-right cs-tile-help" href="#"
+    ng-if="!results.userService.getUserData() && results.nonSyndMediaTypes.indexOf(item.mediaType.toUpperCase())==-1 && !results.embeddable">
+    <i class="icon-info-sign"></i></a>
+
+<div data-syndication-id="{{item.id}}" class="pull-right cs-tile-addtolist" ng-click="results.addToList(item.id)"
+    ng-if="results.userService.getUserData() && results.nonSyndMediaTypes.indexOf(item.mediaType.toUpperCase())==-1 && results.selectedMediaIds.indexOf(item.id)==-1  && !results.embeddable">
+    <span class="tiletxt">Add to List</span><i class="icon-plus"></i>
+</div>
+
+<div data-syndication-id="{{item.id}}" class="pull-right cs-tile-addtolist" ng-click="results.removeFromList(item.id)"
+    ng-if="results.selectedMediaIds.indexOf(item.id)>-1  && !results.embeddable">
+    <span class="tiletxt">Remove from List</span><i class="icon-remove"></i>
+</div>
+
+<div class="center cs-tile-foot" ng-if="!results.embeddable">
+    <!--showAddRemove-->
+    <a title="Click here to see more {{item.mediaType}} content." class="mediaicon-{{item.mediaType.toLowerCase()}}" href="#" data-mediatype="{{item.mediaType}}" ng-click="results.getMediaByType(item.mediaType)"><span>{{item.mediaType}}</span></a>
+</div>
+
+<div class="center cs-tile-foot" ng-if="results.embeddable" ng-click="results.titleClick(item)">
+    <span class="mediaicon-{{item.mediaType.toLowerCase()}}"></span>&nbsp;<span>{{item.mediaType}}</span>
+</div>

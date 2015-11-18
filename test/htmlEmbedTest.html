@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+
+		<!-- Markup for CDC HTMLContent (Isn't this the HTML <data> Object & for Testing Media Preferences) -->
+		<script src="http://localhost:56901/js/libs/jquery.min.js"></script>
+		<script src="http://localhost:56901/js/plugins/htmlContent_tempPlugin.js"></script>
+
+		<div id="236546" class="CDCContent_236546"></div>
+		<script>
+			$('.CDCContent_236546').htmlContentPlugin({
+			   mediaId: 236546,
+			   apiRoot: 'https://.....[devApiServer].....',
+			   stripScripts: true,
+			   stripAnchorTags: false,
+			   stripImages: false,
+			   stripComments: true,
+			   stripInlineStyles: true,
+			   imageFloat: 'none',
+			   of: 'XHTML',
+			   oe: 'UTF-8',
+			   ns: '',
+			   nw: false
+			});
+		</script>
+		<noscript>You need javascript enabled to view this content or go to the <a href="https://.....[devApiServer]...../api/v2/resources/media/236546/noscript">source URL</a>.</noscript>
+	</body>
+</html>

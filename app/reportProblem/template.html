@@ -1,0 +1,111 @@
+﻿
+<h2>Report a Problem</h2>
+<div class="reportProblemPage sf_form">
+    <div class="alert alert-error requestPageValidation hide">
+        <span class="msg"></span>
+    </div>
+    <div class="alert alert-success resetSuccess hide">
+        <span class="msg"></span>
+    </div>
+
+    <div class="form-horizontal sf_form">
+        <p>If you see a problem with a syndicated page, please let us know. Enter the Web page URL and problem description below, then select Submit.</p>
+
+        <form id="emailforms" method="get" action="{{reportProblem.EMAIL_VALIDATOR}}" class="validate" role="form" novalidate>
+            <input name="validator" type="hidden" value="recaptcha" />
+            <input name="LineWrap" type="hidden" value="2048" />
+            <input name="env.HTTP_USER_AGENT" type="hidden" value="{{reportProblem.HTTP_USER_AGENT}}" />
+            <input name="env.HTTP_HOST" type="hidden" value="{{reportProblem.HTTP_HOST}}" />
+            <input name="env.HTTP_REFERER" type="hidden" value="{{reportProblem.HTTP_REFERER}}" />
+            <input name="Subject" type="hidden" value="Media Library - Report a Problem" />
+            <input type="hidden" name="RCPT" value="{{reportProblem.RCPT}}" />
+            <input type="hidden" name="EmailTemplate" value="{{reportProblem.EMAIL_REPORT_TEMPLATE}}" />
+            <input type="hidden" name="refer" value="{{reportProblem.EMAIL_REPORT_REFER}}" />
+
+            <input id="Host" name="Host" type="hidden" value="{{reportProblem.HTTP_HOST}}" />
+
+            <div class="control-group">
+                <label class="control-label" for="email">Contact Email</label>
+                <div class="controls">
+                    <input type="email" id="From" name="From" ng-model="reportProblem.emailforms.email" placeholder="Email" class="input-xlarge" maxlength="256" required="required" />
+                </div>
+                <!-- email validation -->
+                <div ng-show="emailforms.showValidationMessages" ng-messages="emailforms.fromEmail.$error" class="valMsg">
+                    <span ng-message="required">Please enter your email address</span>
+                    <span ng-message="email">Invalid email format</span>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="problemUrl">Web Page URL</label>
+                <div class="controls">
+                    <input type="url" id="problemUrl" name="problemUrl" ng-model="emailforms.problemUrl" placeholder="http://www.domain.com" class="input-xlarge" maxlength="100" required="required" />
+                </div>
+                <div ng-show="emailforms.showValidationMessages" ng-messages="emailforms.problemUrl.$error" class="valMsg">
+                    <span ng-message="required">Please enter the URL of the problem page</span>                    
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="problemDesc">Problem Description</label>
+                <div class="controls">
+                    <textarea id="problemDesc" name="problemDesc" class="input-xlarge" rows="5" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <div id="recaptcha"></div>
+                    <script>
+
+                        $.getScript("//www.google.com/recaptcha/api/js/recaptcha_ajax.js", function () {
+                            if (typeof Recaptcha != "undefined") {
+                                Recaptcha.create("6LeoX_8SAAAAAHg8zLCbOeT3bgPcnziriOmXHxYU", "recaptcha", {
+                                    theme: "white",
+                                    callback: function () {
+                                        $('.control-group .spinner').hide();
+
+                                        cdcApplyValidation();
+
+                                        $('form.validate').submit(function () {
+                                            setTimeout(function () {
+                                                if ($('.reportProblemPage .error:visible').length == 0) {
+                                                    $('.control-group .spinner').show();
+                                                }
+                                            }, 500);
+                                                                                       
+                                        });
+                                    }
+                                });
+                            }
+                            else {
+                                //alert("recaptcha not loaded");
+                            }
+                        });
+
+                    </script>
+                    <noscript>
+                        <iframe src="//www.google.com/recaptcha/api/noscript?k=6LeoX_8SAAAAAHg8zLCbOeT3bgPcnziriOmXHxYU" height="300" width="500" title="Challenge field"></iframe>
+                        <div class="form-group">
+                            <label for="recaptcha_challenge_field">Respond to the challenge above to get a value to enter in this box:</label>
+                            <textarea id="recaptcha_challenge_field" name="recaptcha_challenge_field"
+                                rows="3" cols="40"></textarea>
+                            <input type="hidden" name="recaptcha_response_field" value="manual_challenge" />
+                        </div>
+                    </noscript>
+                    <div class="form-group challenge clearPositioning"></div>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label"></label>
+                <div class="controls">
+                    <button id="btnSubmit" name="btnSubmit" class="btn btn-primary" type="submit">Submit</button> <span class="valMsg_global spinner"><span class="icon-spinner icon-spin"></span> Sending request ...</span>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>

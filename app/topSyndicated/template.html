@@ -1,0 +1,9 @@
+﻿<div class="module-typeH">
+	<h3>Top Syndicated Pages</h3>
+	<ul class="list-block">
+		<div ng-show="topSyndicated.showSpinner" class="progressIndicator"></div>
+		<li ng-repeat="item in topSyndicated.data">
+			<a href="#/media/id/{{item.id}}">{{item.name}}</a>
+		</li>
+	</ul>
+</div>

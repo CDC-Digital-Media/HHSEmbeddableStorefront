@@ -1,0 +1,70 @@
+﻿<div class="loginReset sf_form">
+
+	<div ng-show="!resetPasswordRequest.success">
+
+		<h2>Forgot Your Password?</h2>
+		<p>
+			If you have forgotten your password, enter your email address below. We will send a message to your email address with a link you can use to come back to the Content Syndication site and choose a new password.
+		</p>
+		<p>
+			Please note that the speed at which the email message from the Content Syndication site arrives in your email box depends on your Internet Service Provider.
+		</p>
+
+		<div class="loginForm">
+			<!--<div class="alert alert-error contactInfoValidation hide">
+				<span class="msg"></span>
+			</div>-->
+			<div class="form-horizontal">
+				<form name="resetPasswordRequest.form" novalidate>
+					<fieldset>
+
+						<!-- required info -->
+						<div class="requiredNote">
+							<small><span class="warning">*</span>required</small>
+						</div>
+
+						<!-- email input -->
+						<div class="control-group">
+							<label for="userEmail" class="control-label">Email Address<span class="warning">*</span></label>
+							<div class="controls">
+								<input type="email" id="userEmail" name="userEmail" ng-model="resetPasswordRequest.user.email" placeholder="Email Address" class="input-xlarge" maxlength="50" ng-required="true" ng-focus="resetPasswordRequest.form.$setPristine()" />
+							</div>
+							<!-- email validation -->
+							<div ng-if="resetPasswordRequest.form.$submitted" ng-messages="resetPasswordRequest.form.userEmail.$error" class="valMsg">
+								<span ng-message="required">Please tell us your email</span>
+								<span ng-message="email">This is not a valid email</span>
+							</div>
+
+							<!-- login pending message -->
+							<!-- todo: need a spinner here as well -->
+							<span ng-show="resetPasswordRequest.pending">Sending email reset request...</span>
+
+							<!-- error message -->
+							<div ng-if="resetPasswordRequest.form.$submitted" ng-messages="resetPasswordRequest.form.$error" class="valMsg">
+								<span ng-message="serverError">{{resetPasswordRequest.errorMessage}}</span>
+							</div>
+						</div><!-- control-group -->
+
+						<!-- submit button -->
+						<div class="control-group">
+							<div class="controls typeG">
+								<input type="submit" ng-click="resetPasswordRequest.submit()" class="btnResetPassword btn btn-primary" value="Reset Password" />
+							</div>
+						</div>
+
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- success message -->
+	<div class="resetRequested" ng-show="resetPasswordRequest.success">
+		<h2>Thank you!</h2>
+		<p>We have sent an email containing instructions on how to reset your account to <strong>{{resetPasswordRequest.user.email}}</strong>.</p>
+		<p>
+			Please note that the speed at which the email message from the Content Syndication site arrives in your email box depends on your Internet Service Provider and/or mail provider.
+		</p>
+	</div>
+
+</div>

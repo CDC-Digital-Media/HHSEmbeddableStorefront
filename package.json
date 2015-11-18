@@ -1,0 +1,54 @@
+{
+  "name": "Storefront",
+  "version": "3.0.14",
+  "description": "",
+  "main": "js/index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "test"
+  },
+  "dependencies": {
+    "angular": "^1.3.8",
+    "angular-cookies": "^1.3.8",
+    "angular-messages": "^1.3.8",
+    "angular-route": "^1.3.8",
+    "lodash": "^3.0.1",
+    "validator": "^3.22.1"
+  },
+  "devDependencies": {
+    "browserify-shim": "^3.8.2",
+    "es6ify": "^1.6.0",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.2.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-htmlmin": "^0.3.0",
+    "grunt-contrib-jshint": "^0.11.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-uglify": "^0.7.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-jscs": "^1.1.0",
+    "grunt-mixin": "^0.1.0",
+    "grunt-replace": "^0.8.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "browser": {
+    "angular": "./node_modules/angular/angular.js",
+    "angular-route": "./node_modules/angular-route/angular-route.js",
+    "angular-messages": "./node_modules/angular-messages/angular-messages.js",
+    "angular-cookies": "./node_modules/angular-cookies/angular-cookies.js"
+  },
+  "browserify-shim": {
+    "angular": "angular"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  }
+}

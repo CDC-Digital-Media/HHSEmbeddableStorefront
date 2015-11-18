@@ -1,0 +1,27 @@
+﻿<div class="mediaSyndOptions" ng-if="!media.pending">
+
+    <span>
+        <i class="icon-angle-left" /> <a class="returnToResults" href="#" ng-click="media.goBack()"> Return to Previous Page</a>
+    </span>
+
+    <div class="pull-right">
+        <a title="Please login or create a new user account to add this item to your syndication list"
+            class="pull-right cs-tile-help" href="#"
+            ng-if="!media.userData && media.nonSyndMediaTypes.indexOf(media.mediaItem.mediaType.toUpperCase())==-1">
+            <i class="icon-info-sign"></i></a>
+
+        <a data-syndication-id="{{media.mediaItem.id}}"
+            class="pull-right cs-tile-help" ng-click="media.addToList(media.mediaItem.id)" href="#"
+            ng-if="media.userData && media.nonSyndMediaTypes.indexOf(media.mediaItem.mediaType.toUpperCase())==-1 && media.selectedMediaIds.indexOf(media.mediaItem.id)==-1 && media.showAddRemove">
+            <span class="tiletxt">Add to {{media.$rootScope.syndList.listName}}</span>&nbsp;&nbsp;&nbsp;<i class="icon-plus"></i>
+        </a>
+
+        <a data-syndication-id="{{item.id}}" class="pull-right cs-tile-help"
+            ng-click="media.removeFromList(media.mediaItem.id)" href="#"
+            ng-if="media.selectedMediaIds.indexOf(media.mediaItem.id)>-1 && media.showAddRemove">
+            <span class="tiletxt">Remove from {{media.$rootScope.syndList.listName}}</span>&nbsp;&nbsp;&nbsp;<i class="icon-remove"></i>
+        </a>
+    </div>
+</div>
+<div class="progressIndicator" ng-if="media.pending"></div>
+<div class="detail"></div>
