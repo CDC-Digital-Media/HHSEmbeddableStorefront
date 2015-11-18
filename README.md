@@ -1,8 +1,8 @@
 
-#HHS Embeddable Storefront
+# HHS Embeddable Storefront
 This is a prototype application to allow
 
-##PROJECT SETUP
+## PROJECT SETUP
 For Windows:
 install node.js from  http://www.nodejs.org/download/
 
@@ -11,7 +11,9 @@ run the node.js command prompt
 
 install module 'grunt-cli' globally
 - in node command prompt: 
-```npm install -g grunt-cli```
+```
+npm install -g grunt-cli
+```
 
 Add any new references to BOTH .csjproj file and build.xml (for Jenkins)
 
@@ -19,26 +21,30 @@ Add any new references to BOTH .csjproj file and build.xml (for Jenkins)
 
 cd to same directory as Gruntfile.js (root folder of project)
 
-###MANUALLY
+### MANUALLY
 if you want to switch and test different environments
 
 in node command prompt: 
-```grunt build --target=<TARGET> --embeddable=true```
+```
+grunt build --target=<TARGET> --embeddable=true
+```
     
 possible target arguments: debug, dev, test, prototype, prod (e.g. grunt build --target=dev)
 
-###AUTOMATICALLY
+### AUTOMATICALLY
 
 watches javascript, less and [index.]html files for changes and builds files automatically on the fly
 
 --> IMPORTANT: assumes 'local' (development) environment!
 
 in node command prompt:
-```grunt watch --embeddable=true```
+```
+grunt watch --embeddable=true
+```
 
 
 
-##HOW TO SETUP ISSEXPRESS FROM THE COMMAND LINE:
+## HOW TO SETUP ISSEXPRESS FROM THE COMMAND LINE:
 
 on Windows 7:
 * go to C:\Program Files\IIS Express
@@ -50,7 +56,7 @@ additional help:
 http://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line
 http://stackoverflow.com/questions/8735713/creating-virtual-directories-in-iis-express
 
-##USE:
+## USE:
 The storefront is embedded with the CDC widget framework.  To add the storefront to a page you must include a div with data
 attributes for storefront configuration, and a script.  The data attributes include:
 
@@ -75,35 +81,37 @@ Code for embed example:
 
 You can also view index.html and pass in the configuration options with # fragments at the end of the url like:
 
-```index.html#/embeddable/collectionId/5/title/Test%20Embeddable%20Storefront/theme/blue/controls/false```
+```
+index.html#/embeddable/collectionId/5/title/Test%20Embeddable%20Storefront/theme/blue/controls/false
+```
 
 
 
-##OTHER INFO
-###IISExpress
+## OTHER INFO
+### IISExpress
 http://www.iis.net/learn/extensions/using-iis-express/running-iis-express-from-the-command-line
 http://www.codeproject.com/Articles/396569/Make-Web-Development-Easier-with-IIS-Express
 
-###node.js
+### node.js
 http://www.nodejs.org/
 http://www.nodejs.org/documentation/
 http://www.nodejs.org/documentation/api/
 
-###grunt:
+### grunt:
 http://gruntjs.com/
 
-###watchify:
+### watchify:
 https://github.com/substack/watchify
 
-###browserify:
+### browserify:
 http://browserify.org/
 https://github.com/substack/node-browserify
 https://github.com/jmreidy/grunt-browserify
 
-###Angular HTML 5 mode:
+### Angular HTML 5 mode:
 
-###Front end settings:
+### Front end settings:
 https://scotch.io/quick-tips/pretty-urls-in-angularjs-removing-the-hashtag
 
-###Server settings:
+### Server settings:
 https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions#how-to-configure-your-server-to-work-with-html5mode
